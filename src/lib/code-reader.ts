@@ -7,66 +7,72 @@ import path from "path";
  */
 const COMPONENT_SUBFOLDER: Record<string, string> = {
   // Gradients
-  LinearGradient:   "gradients",
+  LinearGradient: "gradients",
   DiagonalGradient: "gradients",
-  SunsetGradient:   "gradients",
-  OceanGradient:    "gradients",
+  SunsetGradient: "gradients",
+  OceanGradient: "gradients",
   MidnightGradient: "gradients",
-  RadialGlow:       "gradients",
-  DualRadial:       "gradients",
-  CornerRadial:     "gradients",
-  Spotlight:        "gradients",
-  VignetteGlow:     "gradients",
-  MeshGradient:     "gradients",
-  SoftMesh:         "gradients",
-  LayeredMesh:      "gradients",
-  OrganicMesh:      "gradients",
-  FloatingMesh:     "gradients",
-  AuroraGlow:       "gradients",
-  NorthernLights:   "gradients",
-  AuroraRibbon:     "gradients",
-  SoftAurora:       "gradients",
-  BlurredAurora:    "gradients",
+  RadialGlow: "gradients",
+  DualRadial: "gradients",
+  CornerRadial: "gradients",
+  Spotlight: "gradients",
+  VignetteGlow: "gradients",
+  MeshGradient: "gradients",
+  OrganicMesh: "gradients",
+  FloatingMesh: "gradients",
+  PolygonMesh: "gradients",
+  GlassMesh: "gradients",
+  AuroraGlow: "gradients",
+  NorthernLights: "gradients",
+  AuroraRibbon: "gradients",
+  AuroraMist: "gradients",
+  AuroraSpectrum: "gradients",
 
   // Grid
-  SquareGrid:       "grid",
-  FineGrid:         "grid",
-  LargeGrid:        "grid",
-  OffsetGrid:       "grid",
-  GlowGrid:         "grid",
-  PerspectiveGrid:  "grid",
+  SquareGrid: "grid",
+  FineGrid: "grid",
+  LargeGrid: "grid",
+  OffsetGrid: "grid",
+  GlowGrid: "grid",
+  PerspectiveGrid: "grid",
   RetroHorizonGrid: "grid",
-  WireframeFloor:   "grid",
-  VanishingGrid:    "grid",
-  CyberGrid:        "grid",
+  WireframeFloor: "grid",
+  VanishingGrid: "grid",
+  CyberGrid: "grid",
 
   // Pattern
-  DotGrid:          "pattern",
-  MicroDots:        "pattern",
-  FadeDots:         "pattern",
-  HalftoneDots:     "pattern",
-  DiamondDots:      "pattern",
+  DotGrid: "pattern",
+  MicroDots: "pattern",
+  FadeDots: "pattern",
+  HalftoneDots: "pattern",
+  DiamondDots: "pattern",
 
   // Texture
-  FilmGrain:        "texture",
-  PaperGrain:       "texture",
-  StaticNoise:      "texture",
-  DustParticles:    "texture",
-  SandGrain:        "texture",
+  FilmGrain: "texture",
+  PaperGrain: "texture",
+  StaticNoise: "texture",
+  DustParticles: "texture",
+  SandGrain: "texture",
 
   // Waves
-  LayeredWaves:     "waves",
-  OceanWaves:       "waves",
-  RibbonWaves:      "waves",
-  FlowingCurves:    "waves",
-  TopWaveDivider:   "waves",
+  LayeredWaves: "waves",
+  OceanWaves: "waves",
+  FlowingCurves: "waves",
+  RibbonWaves: "waves",
+  AuroraWaves: "waves",
+  ContourWaves: "waves",
+  SoundWaves: "waves",
+  InterferenceWaves: "waves",
+  SpiralWaves: "waves",
+  RadialRipples: "waves",
+
 
   // Glass
-  GlassBlur:        "glass",
-  GlassPrism:       "glass",
-  FrostedOverlay:   "glass",
-  CrystalGlass:     "glass",
-  LiquidGlass:      "glass",
+  GlassBlur: "glass",
+  GlassPrism: "glass",
+  FrostedOverlay: "glass",
+  CrystalGlass: "glass",
+  LiquidGlass: "glass",
 };
 
 /**
@@ -80,20 +86,20 @@ export function getBackgroundCode(componentName: string): string {
 
     const filePath = subfolder
       ? path.join(
-          process.cwd(),
-          "src",
-          "components",
-          "backgrounds",
-          subfolder,
-          `${componentName}.tsx`
-        )
+        process.cwd(),
+        "src",
+        "components",
+        "backgrounds",
+        subfolder,
+        `${componentName}.tsx`
+      )
       : path.join(
-          process.cwd(),
-          "src",
-          "components",
-          "backgrounds",
-          `${componentName}.tsx`
-        );
+        process.cwd(),
+        "src",
+        "components",
+        "backgrounds",
+        `${componentName}.tsx`
+      );
 
     return fs.readFileSync(filePath, "utf-8");
   } catch (error) {

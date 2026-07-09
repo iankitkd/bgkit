@@ -2,37 +2,38 @@
 
 :root {
   /* Background Component Dynamic Variables */
-  --bg-canvas: #06080d;
+  --bg-canvas: #060b15;
   --bg-accent: #7c3aed;
-  --bg-secondary: #06b6d4;
-  --bg-accent-2: #ec4899;
-  --bg-accent-3: #22c55e;
-  --bg-foreground: #f8fafc;
-  --bg-border: #232a36;
+  --bg-secondary: #0ea5e9;
+  --bg-accent-2: #f43f5e;
+  --bg-accent-3: #10b981;
+  --bg-foreground: #dde4ef;
+  --bg-border: #2a4468;
 
   /* Brand */
   --primary: #7c3aed;
-  --primary-hover: #8b5cf6;
+  --primary-hover: #6d28d9;
   --primary-soft: #a78bfa;
   --primary-rgb: 124, 58, 237;
 
   --secondary: #06b6d4;
+  --secondary-soft: #67e8f9;
   --secondary-rgb: 6, 182, 212;
 
-  /* Backgrounds */
-  --bg: #06080d;
-  --surface: #0d1117;
-  --surface-2: #111827;
-  --surface-3: #161b22;
+  /* Background */
+  --bg: #09090b;
+  --surface: #111318;
+  --surface-2: #171a21;
+  --surface-3: #1d212b;
 
   /* Text */
   --fg: #f8fafc;
   --muted: #94a3b8;
-  --muted-2: #64748b;
+  --muted-2: #6b7280;
 
   /* Borders */
-  --border: #232a36;
-  --border-light: #30384a;
+  --border: #2b3442;
+  --border-light: #3a4455;
 
   /* States */
   --success: #22c55e;
@@ -40,8 +41,8 @@
   --danger: #ef4444;
 
   /* Effects */
-  --shadow: rgba(0, 0, 0, 0.35);
-  --glow: rgba(124, 58, 237, 0.35);
+  --shadow: rgba(0, 0, 0, .45);
+  --glow: rgba(124, 58, 237, .35);
 
   --radius-btn: 12px;
   --radius-card: 24px;

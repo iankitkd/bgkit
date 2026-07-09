@@ -119,7 +119,7 @@ function LivePreviewPane({ componentName, bgName }: { componentName: string; bgN
       <div className="relative w-full overflow-hidden flex flex-col rounded-input border border-border bg-bg aspect-video">
         {/* Component fills the entire pane */}
         <div className="absolute inset-0 pointer-events-none">
-          <Component />
+          <Component variant="thumbnail" />
         </div>
       </div>
       {/* Name badge */}

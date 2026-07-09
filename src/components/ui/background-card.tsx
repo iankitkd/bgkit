@@ -37,13 +37,14 @@ export default function BackgroundCard({ item, code }: BackgroundCardProps) {
       />
 
       {/* Background Preview Container */}
-      <div className="relative h-48 w-full overflow-hidden border-b border-border bg-bg pointer-events-none select-none">
+      <div className="relative w-full aspect-video overflow-hidden border-b border-border bg-bg pointer-events-none select-none">
         {!imageError ? (
           <Image
             src={`/thumbnails/${item.slug}.webp`}
             alt={item.name}
-            height={192}
-            width={340}
+            height={180}
+            width={360}
+            loading="eager"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={() => setImageError(true)}
           />
@@ -84,11 +85,10 @@ export default function BackgroundCard({ item, code }: BackgroundCardProps) {
           {/* Copy Button */}
           <button
             onClick={handleCopy}
-            className={`relative z-10 flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-btn text-xs font-bold transition-all cursor-pointer ${
-              copied
-                ? "bg-emerald-500/20 border border-emerald-500/30 text-emerald-400"
-                : "bg-surface hover:bg-surface-2 border border-border text-muted"
-            }`}
+            className={`relative z-10 flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-btn text-xs font-bold transition-all cursor-pointer ${copied
+              ? "bg-emerald-500/20 border border-emerald-500/30 text-emerald-400"
+              : "bg-surface hover:bg-surface-2 border border-border text-muted"
+              }`}
           >
             {copied ? (
               <>

@@ -1,34 +1,106 @@
-export default function GlowGrid() {
+import type { BackgroundProps } from "@/types";
+
+type VariantConfig = {
+  spacing: number;
+  lineOpacity: number;
+  dotOpacity: number;
+  dotSize: number;
+  glowOpacity: number;
+  vignetteOpacity: number;
+};
+
+const CONFIG = {
+  hero: {
+    spacing: 56,
+    lineOpacity: 0.10,
+    dotOpacity: 0.45,
+    dotSize: 2.6,
+    glowOpacity: 0.14,
+    vignetteOpacity: 0.18,
+  },
+
+  preview: {
+    spacing: 48,
+    lineOpacity: 0.14,
+    dotOpacity: 0.56,
+    dotSize: 2.4,
+    glowOpacity: 0.18,
+    vignetteOpacity: 0.14,
+  },
+
+  thumbnail: {
+    spacing: 40,
+    lineOpacity: 0.20,
+    dotOpacity: 0.72,
+    dotSize: 2.8,
+    glowOpacity: 0.26,
+    vignetteOpacity: 0.08,
+  },
+} as const;
+
+export default function GlowGrid({
+  variant = "hero",
+}: BackgroundProps) {
+  const config = CONFIG[variant];
+
   return (
     <div className="absolute inset-0 overflow-hidden bg-bg-canvas">
-      {/* Dim background grid lines */}
-      <div
-        className="absolute inset-0 opacity-15"
-        style={{
-          backgroundImage: `linear-gradient(var(--color-bg-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)`,
-          backgroundSize: `48px 48px`,
-        }}
-      />
-      {/* Glowing dot at each intersection */}
-      <div
-        className="absolute inset-0 opacity-45"
-        style={{
-          backgroundImage: `radial-gradient(circle, var(--color-bg-accent) 2px, transparent 2px)`,
-          backgroundSize: `48px 48px`,
-        }}
-      />
-      {/* Center glow over the grid */}
-      <div
-        className="absolute inset-0 opacity-25"
-        style={{
-          background: `radial-gradient(ellipse at 50% 50%, var(--color-bg-accent), transparent 65%)`,
-        }}
-      />
-      {/* Dark vignette edges */}
+      {/* Grid */}
+
       <div
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse at 50% 50%, transparent 30%, var(--color-bg-canvas) 90%)`,
+          opacity: config.lineOpacity,
+          backgroundImage: `
+            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)
+          `,
+          backgroundSize: `${config.spacing}px ${config.spacing}px`,
+        }}
+      />
+
+      {/* Glow dots */}
+
+      <div
+        className="absolute inset-0"
+        style={{
+          opacity: config.dotOpacity,
+          backgroundImage: `
+            radial-gradient(
+              circle,
+              var(--color-bg-accent) ${config.dotSize}px,
+              transparent ${config.dotSize}px
+            )
+          `,
+          backgroundSize: `${config.spacing}px ${config.spacing}px`,
+        }}
+      />
+
+      {/* Ambient glow */}
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          opacity: config.glowOpacity,
+          background: `
+            radial-gradient(
+              circle at center,
+              var(--color-bg-accent),
+              transparent 60%
+            )
+          `,
+          mixBlendMode: "screen",
+        }}
+      />
+
+      {/* Edge vignette */}
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          opacity: config.vignetteOpacity,
+          background:
+            "radial-gradient(circle at center, transparent 50%, var(--color-bg-canvas) 100%)",
         }}
       />
     </div>

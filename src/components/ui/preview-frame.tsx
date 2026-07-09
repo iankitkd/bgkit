@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { BACKGROUND_COMPONENTS } from "@/components/backgrounds";
 
 interface PreviewFrameProps {
@@ -9,25 +9,23 @@ interface PreviewFrameProps {
   componentName: string;
 }
 
-export default function PreviewFrame({ slug, name, componentName }: PreviewFrameProps) {
-  const [imageError, setImageError] = useState(false);
+export default function PreviewFrame({
+  name,
+  componentName,
+}: PreviewFrameProps) {
   const Component = BACKGROUND_COMPONENTS[componentName];
 
   return (
-    <div className="w-full max-w-2xl aspect-video rounded-card overflow-hidden border border-border-light bg-bg shadow-2xl relative group">
-      {/* Static Thumbnail image (Primary display) */}
-      {!imageError ? (
-        <img
-          src={`/thumbnails/${slug}.webp`}
-          alt={`${name} preview`}
-          className="absolute inset-0 w-full h-full object-cover z-10"
-          onError={() => setImageError(true)}
-        />
-      ) : null}
-
-      {/* Fallback Live Render inside the frame (so it is fully framed and visible) */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0">
-        {Component && <Component />}
+    <div className="w-full max-w-2xl aspect-video rounded-card overflow-hidden border border-border-light bg-bg shadow-2xl relative">
+      {/* Live component fills the entire frame */}
+      <div className="absolute inset-0">
+        {Component ? (
+          <Component variant="preview" />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center bg-surface-2 text-muted text-xs">
+            {name} — component not found
+          </div>
+        )}
       </div>
 
       {/* Subtle visual guide watermark */}

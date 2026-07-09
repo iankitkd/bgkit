@@ -1,39 +1,142 @@
-export default function NorthernLights() {
+import type { BackgroundProps } from "@/types";
+
+type VariantConfig = {
+  opacity: number;
+  blur: number;
+  foldOpacity: number;
+};
+
+const CONFIG = {
+  hero: {
+    opacity: 0.42,
+    blur: 80,
+    foldOpacity: 0.10,
+  },
+  preview: {
+    opacity: 0.50,
+    blur: 65,
+    foldOpacity: 0.13,
+  },
+  thumbnail: {
+    opacity: 0.62,
+    blur: 50,
+    foldOpacity: 0.18,
+  },
+} as const;
+
+export default function NorthernLights({
+  variant = "hero",
+}: BackgroundProps) {
+  const config = CONFIG[variant];
+
   return (
     <div className="absolute inset-0 overflow-hidden bg-bg-canvas">
-      <style>{`
-        @keyframes nl-shift-1 {
-          0%, 100% { transform: translateX(0%) scaleY(1); opacity: 0.55; }
-          25%       { transform: translateX(4%)  scaleY(1.1); opacity: 0.7; }
-          50%       { transform: translateX(-3%) scaleY(0.9); opacity: 0.45; }
-          75%       { transform: translateX(3%)  scaleY(1.05); opacity: 0.6; }
-        }
-        @keyframes nl-shift-2 {
-          0%, 100% { transform: translateX(0%) scaleY(1); opacity: 0.45; }
-          33%       { transform: translateX(-5%) scaleY(1.15); opacity: 0.6; }
-          66%       { transform: translateX(4%)  scaleY(0.85); opacity: 0.3; }
-        }
-        @keyframes nl-shift-3 {
-          0%, 100% { transform: translateX(0%) scaleY(1); opacity: 0.35; }
-          50%       { transform: translateX(6%)  scaleY(1.2); opacity: 0.5; }
-        }
-        .nl-band-1 { animation: nl-shift-1 9s ease-in-out infinite; }
-        .nl-band-2 { animation: nl-shift-2 12s ease-in-out infinite; }
-        .nl-band-3 { animation: nl-shift-3 7s ease-in-out infinite reverse; }
-      `}</style>
+      {/* Sky */}
+
       <div
-        className="nl-band-1 absolute inset-x-0 top-[8%] h-28 blur-2xl"
-        style={{ background: `linear-gradient(90deg, transparent, var(--color-bg-accent), var(--color-bg-secondary), transparent)` }}
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, var(--color-bg-canvas), rgb(from var(--color-bg-accent) r g b / 0.08))",
+        }}
       />
+
+      {/* Aurora curtains */}
+
+      <svg
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 1440 900"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient
+            id="nl-gradient"
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+          >
+            <stop
+              offset="0%"
+              stopColor="var(--color-bg-secondary)"
+              stopOpacity="0"
+            />
+            <stop
+              offset="18%"
+              stopColor="var(--color-bg-secondary)"
+              stopOpacity={config.opacity}
+            />
+            <stop
+              offset="65%"
+              stopColor="var(--color-bg-accent-3)"
+              stopOpacity={config.opacity * 0.9}
+            />
+            <stop
+              offset="100%"
+              stopColor="var(--color-bg-accent)"
+              stopOpacity="0"
+            />
+          </linearGradient>
+
+          <filter id="nl-blur">
+            <feGaussianBlur stdDeviation={config.blur} />
+          </filter>
+        </defs>
+
+        <path
+          d="
+            M0 170
+            C120 60 230 260 340 120
+            C470 -10 600 240 720 100
+            C850 -40 980 250 1100 110
+            C1230 -20 1330 220 1440 90
+            L1440 900
+            L0 900
+            Z
+          "
+          fill="url(#nl-gradient)"
+          filter="url(#nl-blur)"
+        />
+      </svg>
+
+      {/* Vertical folds */}
+
       <div
-        className="nl-band-2 absolute inset-x-0 top-[22%] h-20 blur-2xl"
-        style={{ background: `linear-gradient(90deg, transparent, var(--color-bg-secondary), var(--color-bg-accent-3), transparent)` }}
+        className="absolute inset-0"
+        style={{
+          opacity: config.foldOpacity,
+          backgroundImage: `
+            repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 42px,
+              var(--color-bg-foreground) 48px,
+              transparent 54px
+            )
+          `,
+        }}
       />
+
+      {/* Horizon glow */}
+
       <div
-        className="nl-band-3 absolute inset-x-0 top-[34%] h-16 blur-xl"
-        style={{ background: `linear-gradient(90deg, transparent, var(--color-bg-accent-2), var(--color-bg-accent), transparent)` }}
+        className="absolute inset-x-0 bottom-0 h-1/3"
+        style={{
+          background:
+            "linear-gradient(to top, rgb(from var(--color-bg-secondary) r g b / 0.10), transparent)",
+        }}
       />
-      <div className="absolute inset-0 bg-radial from-transparent to-bg-canvas/75" />
+
+      {/* Vignette */}
+
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle, transparent 48%, var(--color-bg-canvas) 100%)",
+          opacity: 0.22,
+        }}
+      />
     </div>
   );
 }

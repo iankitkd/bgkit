@@ -1,47 +1,206 @@
-export default function CyberGrid() {
+import type { BackgroundProps } from "@/types";
+
+type VariantConfig = {
+  scanDuration: number;
+  lineOpacity: number;
+  accentOpacity: number;
+  gridOpacity: number;
+};
+
+const CONFIG = {
+  hero: {
+    scanDuration: 6,
+    lineOpacity: 0.16,
+    accentOpacity: 0.42,
+    gridOpacity: 0.18,
+  },
+
+  preview: {
+    scanDuration: 5,
+    lineOpacity: 0.22,
+    accentOpacity: 0.48,
+    gridOpacity: 0.24,
+  },
+
+  thumbnail: {
+    scanDuration: 4,
+    lineOpacity: 0.30,
+    accentOpacity: 0.58,
+    gridOpacity: 0.32,
+  },
+} as const;
+
+export default function CyberGrid({
+  variant = "hero",
+}: BackgroundProps) {
+  const config = CONFIG[variant];
+
   return (
     <div className="absolute inset-0 overflow-hidden bg-bg-canvas">
       <style>{`
         @keyframes cg-scan {
-          0%   { transform: translateY(-8px); opacity: 0; }
-          5%   { opacity: 0.7; }
-          95%  { opacity: 0.7; }
-          100% { transform: translateY(100%); opacity: 0; }
+          from {
+            transform: translateY(-10%);
+          }
+          to {
+            transform: translateY(110%);
+          }
         }
-        .cg-scanline { animation: cg-scan 3.5s linear infinite; }
+
+        @keyframes cg-pulse {
+          0%,100% {
+            opacity:.18;
+          }
+
+          50% {
+            opacity:.42;
+          }
+        }
       `}</style>
 
-      {/* Glowing perspective grid floor */}
-      <div style={{ perspective: "400px", position: "absolute", inset: 0, overflow: "hidden" }}>
+      {/* Ambient glow */}
+
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at center,var(--color-bg-secondary),transparent 60%)",
+          opacity: .08,
+        }}
+      />
+
+      {/* HUD grid */}
+
+      <div
+        className="absolute inset-0"
+        style={{
+          opacity: config.gridOpacity,
+          backgroundImage: `
+            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
+            linear-gradient(90deg,var(--color-bg-border) 1px, transparent 1px)
+          `,
+          backgroundSize: "48px 48px",
+        }}
+      />
+
+      {/* Major guide lines */}
+
+      <div
+        className="absolute inset-0"
+        style={{
+          opacity: config.lineOpacity,
+          backgroundImage: `
+            linear-gradient(var(--color-bg-secondary) 2px, transparent 2px),
+            linear-gradient(90deg,var(--color-bg-secondary) 2px, transparent 2px)
+          `,
+          backgroundSize: "192px 192px",
+        }}
+      />
+
+      {/* Crosshair */}
+
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border"
+        style={{
+          width: 110,
+          height: 110,
+          borderColor: `rgb(from var(--color-bg-accent) r g b / ${config.accentOpacity})`,
+        }}
+      />
+
+      <div
+        className="absolute left-1/2 top-1/2 h-px -translate-x-1/2 -translate-y-1/2"
+        style={{
+          width: 220,
+          background: "var(--color-bg-accent)",
+          opacity: config.accentOpacity,
+        }}
+      />
+
+      <div
+        className="absolute left-1/2 top-1/2 w-px -translate-x-1/2 -translate-y-1/2"
+        style={{
+          height: 220,
+          background: "var(--color-bg-accent)",
+          opacity: config.accentOpacity,
+        }}
+      />
+
+      {/* Corner brackets */}
+
+      {[
+        ["top-8", "left-8"],
+        ["top-8", "right-8"],
+        ["bottom-8", "left-8"],
+        ["bottom-8", "right-8"],
+      ].map(([y, x], i) => (
         <div
+          key={i}
+          className={`absolute ${y} ${x} h-10 w-10`}
           style={{
-            position: "absolute",
-            bottom: 0,
-            left: "-45%",
-            right: "-45%",
-            height: "170%",
-            backgroundImage: `linear-gradient(var(--color-bg-accent) 1px, transparent 1px), linear-gradient(90deg, var(--color-bg-secondary) 1px, transparent 1px)`,
-            backgroundSize: "50px 50px",
-            transform: "rotateX(67deg)",
-            transformOrigin: "50% 0%",
-            opacity: 0.3,
+            borderTop:
+              y.startsWith("top")
+                ? "2px solid var(--color-bg-secondary)"
+                : undefined,
+            borderBottom:
+              y.startsWith("bottom")
+                ? "2px solid var(--color-bg-secondary)"
+                : undefined,
+            borderLeft:
+              x.startsWith("left")
+                ? "2px solid var(--color-bg-secondary)"
+                : undefined,
+            borderRight:
+              x.startsWith("right")
+                ? "2px solid var(--color-bg-secondary)"
+                : undefined,
+            opacity: .45,
           }}
         />
-      </div>
+      ))}
 
-      {/* Scanning line */}
+      {/* Scan line */}
+
       <div
-        className="cg-scanline absolute inset-x-0 h-0.5 blur-sm"
-        style={{ background: `var(--color-bg-accent)`, top: 0 }}
+        className="absolute inset-x-0 h-px"
+        style={{
+          background: "var(--color-bg-accent)",
+          boxShadow: "0 0 18px var(--color-bg-accent)",
+          animation: `cg-scan ${config.scanDuration}s linear infinite`,
+        }}
       />
 
-      {/* Bottom accent glow */}
-      <div
-        className="absolute inset-x-0 bottom-0 h-1/3 opacity-20"
-        style={{ background: `linear-gradient(0deg, var(--color-bg-accent), transparent)` }}
-      />
+      {/* Pulsing nodes */}
 
-      <div className="absolute inset-0 bg-radial from-transparent to-bg-canvas/65" />
+      {[
+        ["22%", "18%"],
+        ["75%", "28%"],
+        ["60%", "82%"],
+        ["28%", "70%"],
+      ].map(([top, left], i) => (
+        <div
+          key={i}
+          className="absolute rounded-full bg-bg-secondary"
+          style={{
+            top,
+            left,
+            width: 6,
+            height: 6,
+            animation: "cg-pulse 2.5s ease-in-out infinite",
+          }}
+        />
+      ))}
+
+      {/* Vignette */}
+
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle,transparent 45%,var(--color-bg-canvas) 100%)",
+          opacity: .32,
+        }}
+      />
     </div>
   );
 }

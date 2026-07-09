@@ -1,30 +1,206 @@
-export default function FloatingMesh() {
+import type { BackgroundProps } from "@/types";
+
+type Blob = {
+  top?: string;
+  bottom?: string;
+  left?: string;
+  right?: string;
+  width: string;
+  height: string;
+  color: string;
+  opacity: number;
+};
+
+type VariantConfig = {
+  blur: number;
+  blobs: readonly Blob[];
+};
+
+const CONFIG: Record<string, VariantConfig> = {
+  hero: {
+    blur: 100,
+    blobs: [
+      {
+        top: "8%",
+        left: "6%",
+        width: "24%",
+        height: "30%",
+        color: "var(--color-bg-accent)",
+        opacity: 0.46,
+      },
+      {
+        top: "14%",
+        right: "8%",
+        width: "20%",
+        height: "26%",
+        color: "var(--color-bg-secondary)",
+        opacity: 0.42,
+      },
+      {
+        top: "42%",
+        left: "38%",
+        width: "18%",
+        height: "24%",
+        color: "var(--color-bg-accent-2)",
+        opacity: 0.36,
+      },
+      {
+        bottom: "10%",
+        left: "12%",
+        width: "22%",
+        height: "28%",
+        color: "var(--color-bg-accent-3)",
+        opacity: 0.32,
+      },
+      {
+        bottom: "6%",
+        right: "10%",
+        width: "26%",
+        height: "32%",
+        color: "var(--color-bg-accent)",
+        opacity: 0.34,
+      },
+    ],
+  },
+
+  preview: {
+    blur: 80,
+    blobs: [
+      {
+        top: "8%",
+        left: "6%",
+        width: "24%",
+        height: "30%",
+        color: "var(--color-bg-accent)",
+        opacity: 0.54,
+      },
+      {
+        top: "14%",
+        right: "8%",
+        width: "20%",
+        height: "26%",
+        color: "var(--color-bg-secondary)",
+        opacity: 0.50,
+      },
+      {
+        top: "42%",
+        left: "38%",
+        width: "18%",
+        height: "24%",
+        color: "var(--color-bg-accent-2)",
+        opacity: 0.42,
+      },
+      {
+        bottom: "10%",
+        left: "12%",
+        width: "22%",
+        height: "28%",
+        color: "var(--color-bg-accent-3)",
+        opacity: 0.38,
+      },
+      {
+        bottom: "6%",
+        right: "10%",
+        width: "26%",
+        height: "32%",
+        color: "var(--color-bg-accent)",
+        opacity: 0.40,
+      },
+    ],
+  },
+
+  thumbnail: {
+    blur: 55,
+    blobs: [
+      {
+        top: "8%",
+        left: "6%",
+        width: "24%",
+        height: "30%",
+        color: "var(--color-bg-accent)",
+        opacity: 0.62,
+      },
+      {
+        top: "14%",
+        right: "8%",
+        width: "20%",
+        height: "26%",
+        color: "var(--color-bg-secondary)",
+        opacity: 0.58,
+      },
+      {
+        top: "42%",
+        left: "38%",
+        width: "18%",
+        height: "24%",
+        color: "var(--color-bg-accent-2)",
+        opacity: 0.50,
+      },
+      {
+        bottom: "10%",
+        left: "12%",
+        width: "22%",
+        height: "28%",
+        color: "var(--color-bg-accent-3)",
+        opacity: 0.46,
+      },
+      {
+        bottom: "6%",
+        right: "10%",
+        width: "26%",
+        height: "32%",
+        color: "var(--color-bg-accent)",
+        opacity: 0.48,
+      },
+    ],
+  },
+} as const;
+
+export default function FloatingMesh({
+  variant = "hero",
+}: BackgroundProps) {
+  const config = CONFIG[variant];
+
   return (
     <div className="absolute inset-0 overflow-hidden bg-bg-canvas">
-      <style>{`
-        @keyframes fm-float-a {
-          0%, 100% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(28px, -18px) scale(1.05); }
-          66% { transform: translate(-16px, 12px) scale(0.96); }
-        }
-        @keyframes fm-float-b {
-          0%, 100% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(-22px, 14px) scale(1.08); }
-          66% { transform: translate(18px, -10px) scale(0.93); }
-        }
-        @keyframes fm-float-c {
-          0%, 100% { transform: translate(0px, 0px) scale(1); }
-          50% { transform: translate(14px, 22px) scale(1.1); }
-        }
-        .fm-a { animation: fm-float-a 8s ease-in-out infinite; }
-        .fm-b { animation: fm-float-b 10s ease-in-out infinite; }
-        .fm-c { animation: fm-float-c 7s ease-in-out infinite; }
-        .fm-d { animation: fm-float-a 11s ease-in-out infinite; animation-delay: -3s; }
-      `}</style>
-      <div className="fm-a absolute top-[-15%] left-[-10%] h-80 w-80 rounded-full bg-bg-accent opacity-40 blur-3xl" />
-      <div className="fm-b absolute bottom-[-15%] right-[-10%] h-96 w-96 rounded-full bg-bg-secondary opacity-35 blur-3xl" />
-      <div className="fm-c absolute top-[40%] left-[32%] h-64 w-64 rounded-full bg-bg-accent-2 opacity-28 blur-3xl" />
-      <div className="fm-d absolute top-[60%] left-[8%] h-48 w-48 rounded-full bg-bg-accent-3 opacity-20 blur-3xl" />
+      {config.blobs.map((blob, index) => (
+        <div
+          key={index}
+          className="absolute rounded-full"
+          style={{
+            top: blob.top,
+            bottom: blob.bottom,
+            left: blob.left,
+            right: blob.right,
+            width: blob.width,
+            height: blob.height,
+            background: blob.color,
+            opacity: blob.opacity,
+            filter: `blur(${config.blur}px)`,
+          }}
+        />
+      ))}
+
+      {/* Subtle ambient light */}
+
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at center, rgb(from var(--color-bg-foreground) r g b / 0.05), transparent 60%)",
+        }}
+      />
+
+      {/* Soft edge fade */}
+
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle, transparent 50%, var(--color-bg-canvas) 100%)",
+          opacity: 0.18,
+        }}
+      />
     </div>
   );
 }

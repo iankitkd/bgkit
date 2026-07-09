@@ -6,12 +6,10 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-32 flex flex-col items-center justify-center text-center">
       {/* Background glow effects */}
-      <div
-        className="absolute top-1/4 left-1/2 -z-10 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10 blur-[120px] bg-primary pointer-events-none"
-      />
+      <div className="absolute top-1/4 left-1/2 -z-10 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10 blur-[120px] bg-primary pointer-events-none" />
       <div className="absolute inset-0 bg-grid-dot-pattern -z-20 opacity-30" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 flex flex-col items-center">
+      <div className="z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 flex flex-col items-center">
         {/* Sparkle badge */}
         <div
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border border-primary/20 bg-primary/10 text-primary transition-all duration-300"

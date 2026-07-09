@@ -12,10 +12,10 @@ interface BackgroundsGalleryProps {
 }
 
 export default function BackgroundsGallery({ initialBackgrounds }: BackgroundsGalleryProps) {
-  const router      = useRouter();
-  const pathname    = usePathname();
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const catParam    = searchParams?.get("category") ?? "all";
+  const catParam = searchParams?.get("category") ?? "all";
 
   // Derive activeCategory directly from URL — no useState needed
   const activeCategory = CATEGORIES.some((c) => c.id === catParam) ? catParam : "all";

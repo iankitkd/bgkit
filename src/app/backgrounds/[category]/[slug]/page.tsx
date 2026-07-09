@@ -8,6 +8,7 @@ import { ArrowLeft } from "lucide-react";
 import DetailPageClient, { IntegrationSetup } from "./detail-client";
 import PreviewFrame from "@/components/ui/preview-frame";
 import { Metadata } from "next";
+import Image from "next/image";
 
 interface PageProps {
   params: Promise<{
@@ -25,7 +26,9 @@ export async function generateStaticParams() {
 }
 
 // Dynamically generate SEO metadata for each background page
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const bg = getBackgroundBySlug(slug);
 
@@ -68,18 +71,26 @@ export default async function BackgroundDetailPage({ params }: PageProps) {
 
       {/* Foreground Layout */}
       <div className="relative z-10 flex-1 max-w-7xl mx-auto w-full px-3 py-8 sm:px-6 lg:px-8 space-y-10">
-
         {/* Top Section: Side-by-Side Code (Left) and Preview (Right) */}
         <div className="flex flex-col lg:flex-row gap-8 items-stretch">
-
           {/* Left Column: Details & Preview Frame */}
           <div className="w-full lg:max-w-2xl flex flex-col justify-between gap-6 glass-panel rounded-panel p-6 border border-border shadow-2xl overflow-hidden self-start">
             <div>
               {/* Breadcrumbs for SEO */}
-              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[10px] font-bold text-muted-2 uppercase tracking-wider mb-4">
-                <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+              <nav
+                aria-label="Breadcrumb"
+                className="flex items-center gap-1.5 text-[10px] font-bold text-muted-2 uppercase tracking-wider mb-4"
+              >
+                <Link href="/" className="hover:text-primary transition-colors">
+                  Home
+                </Link>
                 <span>/</span>
-                <Link href="/backgrounds" className="hover:text-primary transition-colors">Browse</Link>
+                <Link
+                  href="/backgrounds"
+                  className="hover:text-primary transition-colors"
+                >
+                  Browse
+                </Link>
                 <span>/</span>
                 <span className="text-fg">{bg.name}</span>
               </nav>
@@ -97,11 +108,25 @@ export default async function BackgroundDetailPage({ params }: PageProps) {
 
             {/* Bounded aspect-ratio Preview Frame */}
             <div className="flex items-center justify-center">
-              <PreviewFrame slug={bg.slug} name={bg.name} componentName={bg.componentName} />
+              {/* <div className="w-full max-w-2xl aspect-video rounded-card overflow-hidden border border-border-light bg-bg shadow-2xl relative">
+                <Image
+                  src={`/thumbnails/${bg.slug}.webp`}
+                  alt={bg.name}
+                  height={192}
+                  width={340}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div> */}
+              <PreviewFrame
+                slug={bg.slug}
+                name={bg.name}
+                componentName={bg.componentName}
+              />
             </div>
 
             <div className="p-4 rounded-btn bg-bg/40 border border-border backdrop-blur-md text-[9px] md:text-[11px] text-muted">
-              Use the "Customize Colors" control in the header to modify this background's colors live.
+              {`Use the "Customize Colors" control in the header to modify this background's colors live.`}
             </div>
           </div>
 
@@ -112,8 +137,6 @@ export default async function BackgroundDetailPage({ params }: PageProps) {
               <DetailPageClient item={bg} code={code} />
             </div>
           </div>
-
-
         </div>
 
         {/* Bottom Section: Full Width Integration Setup */}
@@ -123,13 +146,13 @@ export default async function BackgroundDetailPage({ params }: PageProps) {
               Integration & Setup Guide
             </h2>
             <p className="text-xs sm:text-sm text-muted">
-              Follow these simple steps to integrate the background component into your React app.
+              Follow these simple steps to integrate the background component
+              into your React app.
             </p>
           </div>
 
           <IntegrationSetup item={bg} />
         </div>
-
       </div>
     </div>
   );
