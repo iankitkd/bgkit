@@ -3,13 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BACKGROUNDS, getBackgroundBySlug } from "@/data";
 import { getBackgroundCode } from "@/lib/code-reader";
-import { BACKGROUND_COMPONENTS } from "@/components/backgrounds";
-import { ArrowLeft } from "lucide-react";
 import DetailPageClient, { IntegrationSetup } from "./detail-client";
 import PreviewFrame from "@/components/ui/preview-frame";
 import HeroPreview from "@/components/ui/hero-preview";
 import { Metadata } from "next";
-import Image from "next/image";
+import { SITE_NAME } from "@/lib/constants";
 
 interface PageProps {
   params: Promise<{
@@ -18,7 +16,6 @@ interface PageProps {
   }>;
 }
 
-// Generate static params for all backgrounds for SSG (Static Site Generation)
 export async function generateStaticParams() {
   return BACKGROUNDS.map((bg) => ({
     category: bg.category,
@@ -26,7 +23,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// Dynamically generate SEO metadata for each background page
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -36,19 +32,52 @@ export async function generateMetadata({
   if (!bg) {
     return {
       title: "Background Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  const title = `${bg.name} — React & Tailwind Background Component`;
+  const title = `${bg.name} - React & Tailwind Background Component`;
   const description = `${bg.description} Customizable global colors. Copy React TSX and Tailwind CSS code instantly.`;
+  const path = `/backgrounds/${bg.category}/${bg.slug}`;
+  const image = `/thumbnails/${bg.slug}.webp`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical: path,
+    },
+    keywords: [
+      bg.name,
+      `${bg.name} background`,
+      `${bg.category} background`,
+      "React background component",
+      "Tailwind CSS background",
+      ...(bg.tags ?? []),
+    ],
     openGraph: {
       title,
       description,
+      url: path,
+      siteName: SITE_NAME,
       type: "website",
+      images: [
+        {
+          url: image,
+          width: 320,
+          height: 180,
+          alt: `${bg.name} React and Tailwind CSS background preview`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
   };
 }
@@ -77,7 +106,7 @@ export default async function BackgroundDetailPage({ params }: PageProps) {
           {/* Left Column: Details & Preview Frame */}
           <div className="w-full lg:max-w-2xl flex flex-col justify-between gap-6 glass-panel rounded-panel p-6 border border-border shadow-2xl overflow-hidden self-start">
             <div>
-              {/* Breadcrumbs for SEO */}
+              {/* Breadcrumbs */}
               <nav
                 aria-label="Breadcrumb"
                 className="flex items-center gap-1.5 text-[10px] font-bold text-muted-2 uppercase tracking-wider mb-4"
@@ -165,8 +194,8 @@ export default async function BackgroundDetailPage({ params }: PageProps) {
 }
 
 // Dynamic Component Renderer
-function LiveBackground({ componentName }: { componentName: string }) {
-  const Component = BACKGROUND_COMPONENTS[componentName];
-  if (!Component) return null;
-  return <Component />;
-}
+// function LiveBackground({ componentName }: { componentName: string }) {
+//   const Component = BACKGROUND_COMPONENTS[componentName];
+//   if (!Component) return null;
+//   return <Component />;
+// }

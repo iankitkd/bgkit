@@ -1,12 +1,40 @@
 import React from "react";
 import Link from "next/link";
-import { BookOpen, Paintbrush, Code, Settings, ArrowRight, CheckCircle2, Terminal } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CheckCircle2,
+  Code,
+  Paintbrush,
+  Settings,
+  Terminal,
+} from "lucide-react";
 import { Metadata } from "next";
 import { SITE_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `How to Use — ${SITE_NAME}`,
-  description: `Learn how to integrate interactive React and Tailwind CSS backgrounds from ${SITE_NAME} into your application.`,
+  title: `How to Use ${SITE_NAME}`,
+  description: `Learn how to integrate copy-paste React and Tailwind CSS backgrounds from ${SITE_NAME} into your application with CSS variables and live color customization.`,
+  alternates: {
+    canonical: "/how-to-use",
+  },
+  keywords: [
+    "how to use React backgrounds",
+    "Tailwind CSS background components",
+    "copy paste component guide",
+    "CSS variables backgrounds",
+    SITE_NAME,
+  ],
+  openGraph: {
+    title: `How to Use ${SITE_NAME}`,
+    description: `Add ${SITE_NAME} backgrounds to your React app with component code, Tailwind CSS variables, and live color customization.`,
+    url: "/how-to-use",
+    type: "article",
+  },
+  twitter: {
+    title: `How to Use ${SITE_NAME}`,
+    description: `Add copy-paste React and Tailwind CSS backgrounds from ${SITE_NAME} to your app.`,
+  },
 };
 
 export default function HowToUsePage() {
@@ -14,22 +42,26 @@ export default function HowToUsePage() {
     {
       icon: <BookOpen className="w-6 h-6" />,
       title: "1. Choose Your Template",
-      description: "Browse our curated collection of backgrounds under grid, mesh, geometric, noise, or wave categories. Find the style that fits your layout.",
+      description:
+        "Browse our curated collection of backgrounds under grid, mesh, geometric, noise, or wave categories. Find the style that fits your layout.",
     },
     {
       icon: <Paintbrush className="w-6 h-6" />,
       title: "2. Customize Live",
-      description: "Use the Global Color Customizer in the header. Adjust all 7 CSS variables — canvas, accent, secondary, accent-2, accent-3, foreground, and border — live on the page.",
+      description:
+        "Use the Global Color Customizer in the header. Adjust all 7 CSS variables: canvas, accent, secondary, accent-2, accent-3, foreground, and border.",
     },
     {
       icon: <Code className="w-6 h-6" />,
       title: "3. Copy the Component Code",
-      description: "Go to the background's detail page, view the React (TypeScript) source, and click the copy button to get the self-contained component file.",
+      description:
+        "Go to the background detail page, view the React TypeScript source, and click the copy button to get the self-contained component file.",
     },
     {
       icon: <Settings className="w-6 h-6" />,
       title: "4. Setup CSS Variables",
-      description: "Paste the CSS variables block (from the detail page Integration Guide) into your globals.css. The values will match exactly what you had customized in the header.",
+      description:
+        "Paste the CSS variables block from the detail page Integration Guide into your globals.css. The values match the colors customized in the header.",
     },
   ];
 
@@ -70,7 +102,9 @@ export default function HowToUsePage() {
           How to use {SITE_NAME}
         </h1>
         <p className="text-xs sm:text-base text-muted leading-relaxed">
-          {SITE_NAME} provides self-contained component files. Instead of bloated npm libraries, copy clean source code directly into your React application.
+          {SITE_NAME} provides self-contained component files. Instead of
+          bloated npm libraries, copy clean source code directly into your React
+          application.
         </p>
       </div>
 
@@ -106,29 +140,42 @@ export default function HowToUsePage() {
           <p className="text-xs sm:text-sm text-muted">
             Append this to your root stylesheet (
             <code className="text-fg font-mono">globals.css</code> or{" "}
-            <code className="text-fg font-mono">index.css</code>). These are the 7 variables that
-            all background components read from. The{" "}
-            <strong className="text-fg/80">detail page Integration Guide</strong> auto-fills them
-            with whatever colors you set in the header customizer.
+            <code className="text-fg font-mono">index.css</code>). These are the
+            7 variables that all background components read from. The{" "}
+            <strong className="text-fg/80">
+              detail page Integration Guide
+            </strong>{" "}
+            auto-fills them with whatever colors you set in the header
+            customizer.
           </p>
         </div>
 
         {/* :root block */}
         <div className="relative rounded-input bg-bg/90 border border-border overflow-hidden font-mono text-[11px] sm:text-xs text-muted">
           <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-bg/40">
-            <span className="text-[10px] uppercase font-bold text-muted-2">globals.css</span>
+            <span className="text-[10px] uppercase font-bold text-muted-2">
+              globals.css
+            </span>
             <span className="text-[10px] text-muted-2">:root variables</span>
           </div>
-          <pre className="p-4 overflow-x-auto leading-relaxed select-all">{cssVarsBlock}</pre>
+          <pre className="p-4 overflow-x-auto leading-relaxed select-all">
+            {cssVarsBlock}
+          </pre>
         </div>
 
         {/* @theme block */}
         <div className="relative rounded-input bg-bg/90 border border-border overflow-hidden font-mono text-[11px] sm:text-xs text-muted">
           <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-bg/40">
-            <span className="text-[10px] uppercase font-bold text-muted-2">globals.css</span>
-            <span className="text-[10px] text-muted-2">Tailwind v4 @theme mapping</span>
+            <span className="text-[10px] uppercase font-bold text-muted-2">
+              globals.css
+            </span>
+            <span className="text-[10px] text-muted-2">
+              Tailwind v4 @theme mapping
+            </span>
           </div>
-          <pre className="p-4 overflow-x-auto leading-relaxed select-all">{themeBlock}</pre>
+          <pre className="p-4 overflow-x-auto leading-relaxed select-all">
+            {themeBlock}
+          </pre>
         </div>
       </div>
 
@@ -147,9 +194,9 @@ export default function HowToUsePage() {
               Verify that all seven CSS variables (
               <code className="text-fg font-mono">--bg-canvas</code>,{" "}
               <code className="text-fg font-mono">--bg-accent</code>,{" "}
-              <code className="text-fg font-mono">--bg-secondary</code>, etc.) are declared inside
-              your root stylesheet. Also ensure no parent container has an opaque background
-              overriding the component layer.
+              <code className="text-fg font-mono">--bg-secondary</code>, etc.)
+              are declared inside your root stylesheet. Also ensure no parent
+              container has an opaque background overriding the component layer.
             </p>
           </div>
 
@@ -158,14 +205,14 @@ export default function HowToUsePage() {
               How do I use these variables with Tailwind CSS utility classes?
             </h4>
             <p className="text-xs sm:text-sm text-muted leading-relaxed">
-              Use the{" "}
-              <code className="text-fg font-mono">@theme</code> block (shown above) inside your CSS
-              file. This maps each <code className="text-fg font-mono">--bg-*</code> custom property
+              Use the <code className="text-fg font-mono">@theme</code> block
+              shown above inside your CSS file. This maps each{" "}
+              <code className="text-fg font-mono">--bg-*</code> custom property
               to a Tailwind color token, so you can write{" "}
               <code className="text-fg font-mono">bg-bg-canvas</code>,{" "}
               <code className="text-fg font-mono">text-bg-foreground</code>,{" "}
-              <code className="text-fg font-mono">border-bg-border</code>, etc. as standard utility
-              classes.
+              <code className="text-fg font-mono">border-bg-border</code>, etc.
+              as standard utility classes.
             </p>
           </div>
 
@@ -174,11 +221,14 @@ export default function HowToUsePage() {
               How do I copy my customized colors from the site?
             </h4>
             <p className="text-xs sm:text-sm text-muted leading-relaxed">
-              Open any background's detail page after customizing colors in the header. The{" "}
-              <strong className="text-fg/80">Integration &amp; Setup Guide</strong> at the bottom
-              auto-populates the{" "}
-              <code className="text-fg font-mono">:root</code> block with your current live values —
-              just click inside and copy.
+              Open any background detail page after customizing colors in the
+              header. The{" "}
+              <strong className="text-fg/80">
+                Integration &amp; Setup Guide
+              </strong>{" "}
+              at the bottom auto-populates the{" "}
+              <code className="text-fg font-mono">:root</code> block with your
+              current live values, so you can copy it directly.
             </p>
           </div>
         </div>
@@ -186,7 +236,9 @@ export default function HowToUsePage() {
 
       {/* CTA Footer */}
       <div className="flex flex-col items-center justify-center gap-4 pt-4 relative z-10">
-        <p className="text-xs text-muted-2 font-medium">Ready to customize your first background?</p>
+        <p className="text-xs text-muted-2 font-medium">
+          Ready to customize your first background?
+        </p>
         <Link
           href="/backgrounds"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-btn bg-primary hover:bg-primary/95 text-bg font-bold text-sm transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98]"

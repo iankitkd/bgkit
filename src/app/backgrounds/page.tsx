@@ -9,9 +9,32 @@ import { SITE_NAME } from "@/lib/constants";
 export const revalidate = 86400; // Revalidate daily
 
 export function generateMetadata(): Metadata {
+  const title = "Browse React & Tailwind CSS Backgrounds";
+  const description = `Explore, customize, and copy-paste from our library of ${BACKGROUNDS.length}+ interactive background components built with React and Tailwind CSS.`;
+
   return {
-    title: `Browse Backgrounds — ${SITE_NAME}`,
-    description: `Explore, customize, and copy-paste from our library of ${BACKGROUNDS.length}+ interactive background components built with React and Tailwind CSS.`,
+    title,
+    description,
+    alternates: {
+      canonical: "/backgrounds",
+    },
+    keywords: [
+      "React background library",
+      "Tailwind CSS background components",
+      "copy paste backgrounds",
+      "animated website backgrounds",
+      SITE_NAME,
+    ],
+    openGraph: {
+      title: `${title} | ${SITE_NAME}`,
+      description,
+      url: "/backgrounds",
+      type: "website",
+    },
+    twitter: {
+      title: `${title} | ${SITE_NAME}`,
+      description,
+    },
   };
 }
 
@@ -19,7 +42,6 @@ export default function BackgroundsPage() {
   // Load background metadata and fetch code for copy pasting
   const backgroundsWithCode = BACKGROUNDS.map((bg) => ({
     ...bg,
-    // code: getBackgroundCode(bg.componentName),
     code: getBackgroundCode(bg.componentName),
   }));
 
@@ -32,16 +54,18 @@ export default function BackgroundsPage() {
           <span>Explore Backgrounds</span>
         </h1>
         <p className="text-sm sm:text-sm text-muted max-w-2xl leading-relaxed">
-          Find, preview, customize, and copy-paste interactive React + Tailwind CSS backgrounds. Click on any card to view its full details.
+          Find, preview, customize, and copy-paste interactive React + Tailwind
+          CSS backgrounds. Click on any card to view its full details.
         </p>
       </div>
 
-      {/* Main Gallery Section wrapped in Suspense */}
-      <Suspense fallback={
-        <div className="flex items-center justify-center py-20 text-muted text-sm">
-          Loading gallery...
-        </div>
-      }>
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center py-20 text-muted text-sm">
+            Loading gallery...
+          </div>
+        }
+      >
         <BackgroundsGallery initialBackgrounds={backgroundsWithCode} />
       </Suspense>
     </div>
