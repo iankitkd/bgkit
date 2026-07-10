@@ -39,6 +39,8 @@ import AuroraMist from "./gradients/AuroraMist";
 import AuroraSpectrum from "./gradients/AuroraSpectrum";
 
 // ─── Grid › Square ───────────────────────────────────────────────────────────
+import HexagonGrid from "./grid/HexagonGrid";
+import HorizonGrid from "./grid/HorizonGrid";
 import SquareGrid from "./grid/SquareGrid";
 import FineGrid from "./grid/FineGrid";
 import LargeGrid from "./grid/LargeGrid";
@@ -53,6 +55,8 @@ import VanishingGrid from "./grid/VanishingGrid";
 import CyberGrid from "./grid/CyberGrid";
 
 // ─── Pattern › Dots ──────────────────────────────────────────────────────────
+import TopographicLines from "./pattern/TopographicLines";
+import TopographicRings from "./pattern/TopographicRings";
 import DotGrid from "./pattern/DotGrid";
 import MicroDots from "./pattern/MicroDots";
 import FadeDots from "./pattern/FadeDots";
@@ -85,6 +89,40 @@ import FrostedOverlay from "./glass/FrostedOverlay";
 import CrystalGlass from "./glass/CrystalGlass";
 import LiquidGlass from "./glass/LiquidGlass";
 
+// ─── Vignette ───────────────────────────────────────────────────────────────────
+import VignetteDots from "./vignette/VignetteDots";
+import VignetteGradientMesh from "./vignette/VignetteGradientMesh";
+import VignetteGrid from "./vignette/VignetteGrid";
+import VignetteHexGrid from "./vignette/VignetteHexGrid";
+import VignetteLines from "./vignette/VignetteLines";
+import VignetteNoise from "./vignette/VignetteNoise";
+
+import BlueprintGrid from "./technology/BlueprintGrid";
+import CircuitBoard from "./technology/CircuitBoard";
+import OrbitalRings from "./technology/OrbitalRings";
+
+import NeuralNetwork from "./network/NeuralNetwork";
+import ParticleNetwork from "./network/ParticleNetwork";
+
+import BokehLights from "./lighting/BokehLights";
+import LightBeams from "./lighting/LightBeams";
+
+import Caustics from "./optics/Caustics";
+import LensFlare from "./optics/LensFlare";
+import PrismRefraction from "./optics/PrismRefraction";
+
+import IsometricCubes from "./geometry/IsometricCubes";
+import PaperFold from "./geometry/PaperFold";
+
+import StarField from "./space/StarField";
+import Constellation from "./space/Constellation";
+
+import LiquidBlobs from "./abstract/LiquidBlobs";
+import FloatingOrbs from "./abstract/FloatingOrbs";
+
+
+
+
 // ─── Named re-exports (from local bindings — no duplicate declarations) ───────
 export {
   // Gradients › Linear
@@ -96,10 +134,12 @@ export {
   // Gradients › Aurora
   AuroraGlow, NorthernLights, AuroraRibbon, AuroraMist, AuroraSpectrum,
   // Grid › Square
+  HexagonGrid, HorizonGrid,
   SquareGrid, FineGrid, LargeGrid, OffsetGrid, GlowGrid,
   // Grid › Perspective
   PerspectiveGrid, RetroHorizonGrid, WireframeFloor, VanishingGrid, CyberGrid,
   // Pattern › Dots
+  TopographicLines, TopographicRings,
   DotGrid, MicroDots, FadeDots, HalftoneDots, DiamondDots,
   // Texture › Noise
   FilmGrain, PaperGrain, StaticNoise, DustParticles, SandGrain,
@@ -108,6 +148,22 @@ export {
   InterferenceWaves, SpiralWaves, RadialRipples,
   // Glass
   GlassBlur, GlassPrism, FrostedOverlay, CrystalGlass, LiquidGlass,
+
+  // Vignette
+  VignetteDots, VignetteGradientMesh, VignetteGrid, VignetteHexGrid, VignetteLines, VignetteNoise,
+
+  NeuralNetwork, ParticleNetwork,
+
+  BokehLights, LightBeams,
+
+  Caustics, LensFlare, PrismRefraction,
+  IsometricCubes, PaperFold,
+
+  BlueprintGrid, CircuitBoard, OrbitalRings,
+
+  StarField, Constellation,
+
+  LiquidBlobs, FloatingOrbs,
 };
 
 // ─── Typed component map ──────────────────────────────────────────────────────
@@ -137,6 +193,8 @@ export const BACKGROUND_COMPONENTS: Record<string, ComponentType<BackgroundProps
   AuroraRibbon,
   AuroraMist,
   AuroraSpectrum,
+  HexagonGrid,
+  HorizonGrid,
   SquareGrid,
   FineGrid,
   LargeGrid,
@@ -147,6 +205,8 @@ export const BACKGROUND_COMPONENTS: Record<string, ComponentType<BackgroundProps
   WireframeFloor,
   VanishingGrid,
   CyberGrid,
+  TopographicLines,
+  TopographicRings,
   DotGrid,
   MicroDots,
   FadeDots,
@@ -172,4 +232,28 @@ export const BACKGROUND_COMPONENTS: Record<string, ComponentType<BackgroundProps
   FrostedOverlay,
   CrystalGlass,
   LiquidGlass,
+
+  VignetteDots,
+  VignetteGradientMesh,
+  VignetteGrid,
+  VignetteHexGrid,
+  VignetteLines,
+  VignetteNoise,
+
+  NeuralNetwork,
+  ParticleNetwork,
+  BokehLights,
+  LightBeams,
+  Caustics,
+  LensFlare,
+  PrismRefraction,
+  IsometricCubes,
+  PaperFold,
+  BlueprintGrid,
+  CircuitBoard,
+  OrbitalRings,
+  StarField,
+  Constellation,
+  LiquidBlobs,
+  FloatingOrbs
 };

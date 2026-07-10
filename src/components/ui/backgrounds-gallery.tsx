@@ -37,8 +37,9 @@ export default function BackgroundsGallery({ initialBackgrounds }: BackgroundsGa
 
   // Filter background items based on search and category
   const filteredBackgrounds = useMemo(() => {
+    console.log(initialBackgrounds, "ib")
     return initialBackgrounds.filter((bg) => {
-      const matchesCategory = activeCategory === "all" || bg.category === activeCategory;
+      const matchesCategory = activeCategory === "all" || bg.category.toLowerCase() === activeCategory;
       const matchesSearch =
         bg.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         bg.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -90,7 +91,7 @@ export default function BackgroundsGallery({ initialBackgrounds }: BackgroundsGa
             {CATEGORIES.map((category) => {
               const count = category.id === "all"
                 ? initialBackgrounds.length
-                : initialBackgrounds.filter(b => b.category === category.id).length;
+                : initialBackgrounds.filter(b => b.category.toLowerCase() === category.id).length;
 
               const isActive = activeCategory === category.id;
 

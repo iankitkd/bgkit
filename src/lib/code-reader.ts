@@ -29,6 +29,8 @@ const COMPONENT_SUBFOLDER: Record<string, string> = {
   AuroraSpectrum: "gradients",
 
   // Grid
+  HexagonGrid: "grid",
+  HorizonGrid: "grid",
   SquareGrid: "grid",
   FineGrid: "grid",
   LargeGrid: "grid",
@@ -41,6 +43,8 @@ const COMPONENT_SUBFOLDER: Record<string, string> = {
   CyberGrid: "grid",
 
   // Pattern
+  TopographicLines: "pattern",
+  TopographicRings: "pattern",
   DotGrid: "pattern",
   MicroDots: "pattern",
   FadeDots: "pattern",
@@ -73,6 +77,30 @@ const COMPONENT_SUBFOLDER: Record<string, string> = {
   FrostedOverlay: "glass",
   CrystalGlass: "glass",
   LiquidGlass: "glass",
+
+  VignetteDots: "vignette",
+  VignetteGradientMesh: "vignette",
+  VignetteGrid: "vignette",
+  VignetteHexGrid: "vignette",
+  VignetteLines: "vignette",
+  VignetteNoise: "vignette",
+
+  NeuralNetwork: "network",
+  ParticleNetwork: "network",
+  BokehLights: "lighting",
+  LightBeams: "lighting",
+  Caustics: "optics",
+  LensFlare: "optics",
+  PrismRefraction: "optics",
+  IsometricCubes: "geometry",
+  PaperFold: "geometry",
+  BlueprintGrid: "technology",
+  CircuitBoard: "technology",
+  OrbitalRings: "technology",
+  StarField: "space",
+  Constellation: "space",
+  LiquidBlobs: "abstract",
+  FloatingOrbs: "abstract",
 };
 
 /**

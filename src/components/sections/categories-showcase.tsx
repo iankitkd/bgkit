@@ -3,40 +3,46 @@ import { ArrowRight, Grid, Layers, Cpu, Code2, Network, ShieldAlert } from "luci
 
 const CATEGORIES_SHOWCASE = [
   {
-    icon: Grid,
-    name: "Geometric & Pattern",
-    slug: "geometric",
-    description: "Symmetrical grids, dot matrices, and isometric perspectives. Perfect for structured layouts, software dashboards, and landing page backdrops that demand architectural precision.",
-  },
-  {
     icon: Layers,
-    name: "Gradients & Lighting",
+    name: "Gradients & Aurora",
     slug: "gradients",
-    description: "Ultra-smooth gradient meshes, glowing spotlights, and animated aurora beams. Excellent for modern SaaS landing pages, giving a vibrant, premium look with ambient glows.",
+    description:
+      "Beautiful linear, radial, mesh, and aurora gradients that bring vibrant color, soft depth, and modern aesthetics to landing pages and hero sections.",
   },
   {
-    icon: Cpu,
-    name: "Technical & Engineering",
-    slug: "technical",
-    description: "Circuit board pathways, blueprint grids, and flow lines. Designed to fit tech portfolios, cybersecurity products, dev tools, and systems architectures.",
-  },
-  {
-    icon: Code2,
-    name: "Developer & Terminal",
-    slug: "developer",
-    description: "Command palettes, window frames, terminal scanlines, and floating code snippets. Best for builder tools, portfolio sites, developer blogs, and coding interfaces.",
+    icon: Grid,
+    name: "Grid & Geometry",
+    slug: "grid",
+    description:
+      "Square grids, perspective layouts, hexagonal patterns, blueprint designs, paper folds, and isometric cubes for clean, structured, and technical interfaces.",
   },
   {
     icon: Network,
-    name: "Data & Network",
-    slug: "data",
-    description: "Constellation nodes, orbital rings, and streaming data lanes. Ideal for AI tools, blockchain projects, data analytics platforms, and cloud computing portfolios.",
+    name: "AI & Technology",
+    slug: "technology",
+    description:
+      "Particle networks, neural graphs, circuit boards, orbital rings, and constellation backgrounds inspired by modern AI, cloud infrastructure, and developer tools.",
   },
   {
     icon: ShieldAlert,
-    name: "Glassmorphism & Glass Panels",
+    name: "Glass & Optics",
     slug: "glass",
-    description: "Frosted stacked glass cards and glossy panels. Provides depth, premium aesthetics, and tactile borders suited for high-end web applications and portfolios.",
+    description:
+      "Glassmorphism, crystal effects, prism refraction, caustics, and cinematic lens flares for premium product launches and luxury web experiences.",
+  },
+  {
+    icon: Cpu,
+    name: "Patterns & Textures",
+    slug: "patterns",
+    description:
+      "Topographic contours, vignette patterns, noise, grain, dots, and subtle textures that add depth while keeping content clear and readable.",
+  },
+  {
+    icon: Code2,
+    name: "Abstract & Motion",
+    slug: "abstract",
+    description:
+      "Organic meshes, flowing waves, floating orbs, liquid blobs, and expressive abstract compositions designed for creative portfolios and modern SaaS products.",
   },
 ];
 
@@ -65,7 +71,7 @@ export default function CategoriesShowcaseSection() {
               >
                 <div className="space-y-4">
                   {/* Icon */}
-                  <div 
+                  <div
                     className="inline-flex items-center justify-center p-3 rounded-btn border border-primary/20 bg-primary/5 text-primary"
                   >
                     <Icon className="w-5 h-5" />

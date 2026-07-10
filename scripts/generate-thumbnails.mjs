@@ -5,8 +5,8 @@ import process from "node:process";
 import { chromium } from "playwright";
 import sharp from "sharp";
 
-const WIDTH = 1200;
-const HEIGHT = 675;
+const WIDTH = 320;
+const HEIGHT = 180;
 const PORT = Number(process.env.THUMBNAIL_PORT ?? 4173);
 const HOST = "127.0.0.1";
 let baseUrl = process.env.THUMBNAIL_BASE_URL ?? `http://${HOST}:${PORT}`;
@@ -134,7 +134,7 @@ async function captureThumbnails(backgrounds) {
   const browser = await chromium.launch();
   const page = await browser.newPage({
     viewport: { width: WIDTH, height: HEIGHT },
-    deviceScaleFactor: 1,
+    deviceScaleFactor: 2,
   });
 
   try {

@@ -43,7 +43,8 @@ export default function BackgroundCard({ item, code }: BackgroundCardProps) {
             src={`/thumbnails/${item.slug}.webp`}
             alt={item.name}
             height={180}
-            width={360}
+            width={320}
+            quality={100}
             loading="eager"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={() => setImageError(true)}

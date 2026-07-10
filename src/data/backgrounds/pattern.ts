@@ -1,7 +1,51 @@
 import { BackgroundItem } from "@/types";
 
-/** Pattern > Dots (5) */
 export const PATTERN_BACKGROUNDS: BackgroundItem[] = [
+  {
+    slug: "topographic-lines",
+    name: "Topographic Lines",
+    category: "Pattern",
+    subCategory: "Topographic",
+    description:
+      "Elegant contour map lines creating a premium background for modern SaaS and fintech landing pages.",
+    componentName: "TopographicLines",
+    tags: [
+      "topographic",
+      "contours",
+      "terrain",
+      "map",
+      "lines",
+      "saas",
+      "fintech",
+      "modern",
+      "minimal",
+      "hero",
+    ],
+  },
+
+  {
+    slug: "topographic-rings",
+    name: "Topographic Rings",
+    category: "Pattern",
+    subCategory: "Topographic",
+    description:
+      "Organic contour rings around focal points inspired by topographic maps and premium SaaS hero designs.",
+    componentName: "TopographicRings",
+    tags: [
+      "topographic",
+      "contours",
+      "rings",
+      "terrain",
+      "pattern",
+      "saas",
+      "ai",
+      "modern",
+      "hero",
+      "minimal",
+    ],
+  },
+
+  /** Pattern > Dots (5) */
   {
     slug: "dot-grid",
     name: "Dot Grid",

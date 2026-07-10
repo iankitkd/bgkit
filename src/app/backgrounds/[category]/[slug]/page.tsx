@@ -7,6 +7,7 @@ import { BACKGROUND_COMPONENTS } from "@/components/backgrounds";
 import { ArrowLeft } from "lucide-react";
 import DetailPageClient, { IntegrationSetup } from "./detail-client";
 import PreviewFrame from "@/components/ui/preview-frame";
+import HeroPreview from "@/components/ui/hero-preview";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -65,9 +66,9 @@ export default async function BackgroundDetailPage({ params }: PageProps) {
   return (
     <div className="relative min-h-[calc(100vh-8rem)] w-full overflow-hidden flex flex-col">
       {/* Background Component Container (Active Full Screen Preview) */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+      {/* <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
         <LiveBackground componentName={bg.componentName} />
-      </div>
+      </div> */}
 
       {/* Foreground Layout */}
       <div className="relative z-10 flex-1 max-w-7xl mx-auto w-full px-3 py-8 sm:px-6 lg:px-8 space-y-10">
@@ -137,6 +138,11 @@ export default async function BackgroundDetailPage({ params }: PageProps) {
               <DetailPageClient item={bg} code={code} />
             </div>
           </div>
+        </div>
+
+        {/* "How It Looks" Hero Preview Section */}
+        <div className="space-y-6 pt-8 border-t border-border">
+          <HeroPreview componentName={bg.componentName} name={bg.name} />
         </div>
 
         {/* Bottom Section: Full Width Integration Setup */}

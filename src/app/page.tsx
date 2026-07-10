@@ -2,6 +2,7 @@ import React from "react";
 import HeroSection from "@/components/sections/hero";
 import FeaturesSection from "@/components/sections/features";
 import CategoriesShowcaseSection from "@/components/sections/categories-showcase";
+import FeaturedBackgroundsSection from "@/components/sections/featured-backgrounds";
 import BenchmarksSection from "@/components/sections/benchmarks";
 import HowToUseSection from "@/components/sections/how-to-use";
 import FAQSection from "@/components/sections/faq";
@@ -15,10 +16,11 @@ export default function Home() {
       {/* Landing Page Sections */}
 
       <HeroSection />
-      <FeaturesSection />
+      <FeaturedBackgroundsSection />
       <CategoriesShowcaseSection />
-      <BenchmarksSection />
+      <FeaturesSection />
       <HowToUseSection />
+      <BenchmarksSection />
       <FAQSection />
       <CTASection />
     </div>

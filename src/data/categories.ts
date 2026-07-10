@@ -9,36 +9,94 @@ export const RAW_CATEGORIES = [
   {
     id: "all",
     name: "All",
-    description: "Browse all available backgrounds",
+    description: "Browse every background component across all categories.",
+  },
+
+  {
+    id: "vignette",
+    name: "Vignette",
+    description:
+      "Backgrounds that softly fade toward the edges, creating a focused center ideal for modern AI, SaaS, portfolio, and landing page hero sections.",
   },
   {
-    id: "Gradients",
-    name: "Gradients",
-    description: "Linear, radial, mesh, and aurora gradient backgrounds",
+    id: "network",
+    name: "Network",
+    description:
+      "Connected nodes and neural-style network backgrounds for AI, cloud, and developer products.",
   },
   {
-    id: "Grid",
-    name: "Grid",
-    description: "Square, perspective, and wireframe grid backgrounds",
+    id: "technology",
+    name: "Technology",
+    description:
+      "Circuit boards, blueprints, and technical patterns for engineering and cybersecurity websites.",
   },
   {
-    id: "Pattern",
-    name: "Pattern",
-    description: "Dot and halftone pattern backgrounds",
+    id: "optics",
+    name: "Optics",
+    description:
+      "Light-inspired backgrounds including prism refraction, caustics, and lens flares that bring a premium cinematic look to modern websites.",
   },
   {
-    id: "Texture",
-    name: "Texture",
-    description: "Noise, grain, and texture backgrounds",
-  },
-  {
-    id: "Waves",
-    name: "Waves",
-    description: "SVG wave and curve backgrounds",
-  },
-  {
-    id: "Glass",
+    id: "glass",
     name: "Glass",
-    description: "Frosted glass and glazed backgrounds",
+    description:
+      "Glassmorphism backgrounds with blur, transparency, and crystal-inspired effects.",
+  },
+  {
+    id: "lighting",
+    name: "Lighting",
+    description:
+      "Volumetric beams, bokeh, and cinematic lighting effects for premium hero sections.",
+  },
+
+  {
+    id: "grid",
+    name: "Grid",
+    description:
+      "Square, perspective, hexagonal, and structured grid backgrounds for clean layouts.",
+  },
+  {
+    id: "gradients",
+    name: "Gradients",
+    description:
+      "Linear, radial, mesh, and aurora gradients for modern landing pages and hero sections.",
+  },
+
+  {
+    id: "geometry",
+    name: "Geometry",
+    description:
+      "Geometric backgrounds featuring folded shapes, isometric patterns, and structured forms that add subtle depth and visual interest.",
+  },
+  {
+    id: "pattern",
+    name: "Pattern",
+    description:
+      "Topographic, dotted, and geometric patterns that add subtle visual texture.",
+  },
+  {
+    id: "abstract",
+    name: "Abstract",
+    description:
+      "Organic blobs and artistic abstract backgrounds for creative and startup websites.",
+  },
+  {
+    id: "space",
+    name: "Space",
+    description:
+      "Stars, nebulae, and cosmic-inspired backgrounds for futuristic and AI experiences.",
+  },
+  {
+    id: "waves",
+    name: "Waves",
+    description:
+      "Flowing curves, layered waves, ripples, and contour-inspired backgrounds.",
+  },
+
+  {
+    id: "texture",
+    name: "Texture",
+    description:
+      "Noise, grain, dust, and subtle textures for depth and realism.",
   },
 ] as const satisfies Omit<CategoryInfo, "count">[];

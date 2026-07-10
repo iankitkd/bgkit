@@ -2,6 +2,28 @@ import { BackgroundItem } from "@/types";
 
 /** Grid > Square (5) | Perspective (5) */
 export const GRID_BACKGROUNDS: BackgroundItem[] = [
+  {
+    slug: "hexagon-grid",
+    name: "Hexagon Grid",
+    category: "Grid",
+    subCategory: "Hexagonal",
+    description:
+      "Minimal hexagonal grid commonly used for cybersecurity, blockchain, and enterprise technology websites.",
+    componentName: "HexagonGrid",
+    tags: [
+      "hexagon",
+      "honeycomb",
+      "grid",
+      "cybersecurity",
+      "blockchain",
+      "technology",
+      "enterprise",
+      "developer",
+      "pattern",
+      "hero",
+    ],
+  },
+
   // ===========================
   // Grid > Square
   // ===========================
@@ -62,6 +84,27 @@ export const GRID_BACKGROUNDS: BackgroundItem[] = [
     description: "Retro perspective grid.",
     componentName: "PerspectiveGrid",
     tags: ["grid", "3d", "retro"],
+  },
+  {
+    slug: "horizon-grid",
+    name: "Horizon Grid",
+    category: "Grid",
+    subCategory: "Perspective",
+    description:
+      "A subtle perspective grid fading into the horizon for modern cloud, AI, and SaaS hero sections.",
+    componentName: "HorizonGrid",
+    tags: [
+      "grid",
+      "horizon",
+      "perspective",
+      "developer",
+      "cloud",
+      "saas",
+      "minimal",
+      "modern",
+      "hero",
+      "technology",
+    ],
   },
   {
     slug: "retro-horizon-grid",

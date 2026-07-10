@@ -12,15 +12,6 @@ export const WAVES_BACKGROUNDS: BackgroundItem[] = [
     tags: ["waves", "svg", "layered"],
   },
   {
-    slug: "ocean-waves",
-    name: "Ocean Waves",
-    category: "Waves",
-    subCategory: "Layered",
-    description: "Animated ocean-inspired curves.",
-    componentName: "OceanWaves",
-    tags: ["waves", "animated", "ocean"],
-  },
-  {
     slug: "flowing-curves",
     name: "Flowing Curves",
     category: "Waves",
@@ -168,5 +159,14 @@ export const WAVES_BACKGROUNDS: BackgroundItem[] = [
       "drop",
       "abstract",
     ],
+  },
+  {
+    slug: "ocean-waves",
+    name: "Ocean Waves",
+    category: "Waves",
+    subCategory: "Layered",
+    description: "Animated ocean-inspired curves.",
+    componentName: "OceanWaves",
+    tags: ["waves", "animated", "ocean"],
   },
 ];
