@@ -85,7 +85,7 @@ export default function NeuralNetwork({
                 y1={y1}
                 x2={x2}
                 y2={y2}
-                stroke="var(--color-bg-border)"
+                stroke="var(--color-bg-line)"
                 strokeWidth="1"
                 opacity={config.lineOpacity}
               />

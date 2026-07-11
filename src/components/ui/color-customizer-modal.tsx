@@ -12,6 +12,7 @@ import {
   ACCENT3_PRESETS,
   FG_PRESETS,
   BORDER_PRESETS,
+  LINE_PRESETS,
   type ColorPreset,
 } from "@/context/theme-context";
 import { BACKGROUNDS } from "@/data";
@@ -135,8 +136,8 @@ function LivePreviewPane({ componentName, bgName }: { componentName: string; bgN
 
 export default function ColorCustomizerModal({ isOpen, onClose }: ColorCustomizerModalProps) {
   const {
-    canvas, accent, secondary, accent2, accent3, fg, border,
-    setCanvas, setAccent, setSecondary, setAccent2, setAccent3, setFg, setBorder,
+    canvas, accent, secondary, accent2, accent3, fg, border, line,
+    setCanvas, setAccent, setSecondary, setAccent2, setAccent3, setFg, setBorder, setLine,
     resetTheme,
   } = useThemeContext();
 
@@ -155,8 +156,9 @@ export default function ColorCustomizerModal({ isOpen, onClose }: ColorCustomize
     { label: "Secondary", varName: "--bg-secondary", value: secondary, onChange: setSecondary, presets: SECONDARY_PRESETS, accentColor: accent, swatchShape: "circle" },
     { label: "Accent 2", varName: "--bg-accent-2", value: accent2, onChange: setAccent2, presets: ACCENT2_PRESETS, accentColor: accent, swatchShape: "circle" },
     { label: "Accent 3", varName: "--bg-accent-3", value: accent3, onChange: setAccent3, presets: ACCENT3_PRESETS, accentColor: accent, swatchShape: "circle" },
-    { label: "Foreground", varName: "--bg-foreground", value: fg, onChange: setFg, presets: FG_PRESETS, accentColor: accent, swatchShape: "square" },
+    { label: "Line", varName: "--bg-line", value: line, onChange: setLine, presets: LINE_PRESETS, accentColor: accent, swatchShape: "square" },
     { label: "Border", varName: "--bg-border", value: border, onChange: setBorder, presets: BORDER_PRESETS, accentColor: accent, swatchShape: "square" },
+    { label: "Foreground", varName: "--bg-foreground", value: fg, onChange: setFg, presets: FG_PRESETS, accentColor: accent, swatchShape: "square" },
   ];
 
   return (

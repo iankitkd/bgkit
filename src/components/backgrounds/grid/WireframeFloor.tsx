@@ -44,7 +44,7 @@ export default function WireframeFloor({
         y1={900}
         x2={center}
         y2={horizon}
-        stroke="var(--color-bg-border)"
+        stroke="var(--color-bg-line)"
         strokeWidth={config.strokeWidth}
         opacity={config.lineOpacity}
       />
@@ -79,7 +79,7 @@ export default function WireframeFloor({
       y1={y}
       x2="1440"
       y2={y}
-      stroke={i % 4 === 0 ? "var(--color-bg-accent)" : "var(--color-bg-border)"}
+      stroke={i % 4 === 0 ? "var(--color-bg-accent)" : "var(--color-bg-line)"}
       strokeWidth={i % 4 === 0 ? 1.6 : config.strokeWidth}
       opacity={i % 4 === 0 ? config.accentOpacity : config.lineOpacity}
     />

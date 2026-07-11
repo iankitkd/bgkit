@@ -44,8 +44,8 @@ export default function FineGrid({
         style={{
           opacity: config.lineOpacity,
           backgroundImage: `
-            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)
+            linear-gradient(var(--color-bg-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-bg-line) 1px, transparent 1px)
           `,
           backgroundSize: `${config.spacing}px ${config.spacing}px`,
         }}
@@ -60,7 +60,7 @@ export default function FineGrid({
           backgroundImage: `
             radial-gradient(
               circle,
-              var(--color-bg-border) ${config.dotSize}px,
+              var(--color-bg-line) ${config.dotSize}px,
               transparent ${config.dotSize}px
             )
           `,

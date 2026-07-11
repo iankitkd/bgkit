@@ -44,8 +44,8 @@ export default function VignetteGrid({
         style={{
           opacity: config.gridOpacity,
           backgroundImage: `
-            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)
+            linear-gradient(var(--color-bg-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-bg-line) 1px, transparent 1px)
           `,
           backgroundSize: "28px 28px",
 
@@ -64,8 +64,8 @@ export default function VignetteGrid({
         style={{
           opacity: config.majorOpacity,
           backgroundImage: `
-            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)
+            linear-gradient(var(--color-bg-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-bg-line) 1px, transparent 1px)
           `,
           backgroundSize: "140px 140px",
 

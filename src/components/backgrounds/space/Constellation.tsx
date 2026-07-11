@@ -69,7 +69,7 @@ export default function Constellation({
             y1={STARS[a][1]}
             x2={STARS[b][0]}
             y2={STARS[b][1]}
-            stroke="var(--color-bg-border)"
+            stroke="var(--color-bg-line)"
             strokeWidth="1"
             opacity={config.lineOpacity}
           />

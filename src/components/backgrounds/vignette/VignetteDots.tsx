@@ -42,7 +42,7 @@ export default function VignetteDots({
           backgroundImage: `
             radial-gradient(
               circle,
-              var(--color-bg-border) 1.2px,
+              var(--color-bg-line) 1.2px,
               transparent 1.2px
             )
           `,

@@ -61,7 +61,7 @@ export default function TopographicRings({
                 rx={r}
                 ry={r * 0.72}
                 fill="none"
-                stroke="var(--color-bg-border)"
+                stroke="var(--color-bg-line)"
                 strokeWidth={config.strokeWidth}
                 opacity={config.lineOpacity}
               />
@@ -74,7 +74,7 @@ export default function TopographicRings({
         <path
           d="M330 255 C420 230 470 290 500 315"
           fill="none"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth={config.strokeWidth}
           opacity={config.lineOpacity * 0.75}
         />

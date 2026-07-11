@@ -71,6 +71,14 @@ export const BORDER_PRESETS: ColorPreset[] = [
   { name: "Ash", value: "#2d3748" },
 ];
 
+export const LINE_PRESETS: ColorPreset[] = [
+  { name: "Sky Blue", value: "#7dd3fc" },
+  { name: "Slate Blue", value: "#6388b4" },
+  { name: "Muted Sky", value: "#5b80a5" },
+  { name: "Cool Gray", value: "#94a3b8" },
+  { name: "Dim Slate", value: "#4b6d9b" },
+];
+
 // ─── Defaults ─────────────────────────────────────────────────────────────────
 
 const DEFAULTS = {
@@ -81,6 +89,7 @@ const DEFAULTS = {
   accent3: "#10b981",
   fg: "#dde4ef",
   border: "#2a4468",
+  line: "#7dd3fc",
 } as const;
 
 // ─── Context type ─────────────────────────────────────────────────────────────
@@ -93,6 +102,7 @@ interface ThemeContextType {
   accent3: string;
   fg: string;
   border: string;
+  line: string;
   setCanvas: (v: string) => void;
   setAccent: (v: string) => void;
   setSecondary: (v: string) => void;
@@ -100,6 +110,7 @@ interface ThemeContextType {
   setAccent3: (v: string) => void;
   setFg: (v: string) => void;
   setBorder: (v: string) => void;
+  setLine: (v: string) => void;
   resetTheme: () => void;
   // Legacy aliases kept for backward compat (used in header / modal glows)
   accentColor: string;
@@ -135,6 +146,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [accent3, setAccent3] = useState<string>(DEFAULTS.accent3);
   const [fg, setFg] = useState<string>(DEFAULTS.fg);
   const [border, setBorder] = useState<string>(DEFAULTS.border);
+  const [line, setLine] = useState<string>(DEFAULTS.line);
   const [mounted, setMounted] = useState(false);
 
   // Load persisted values once on mount
@@ -146,6 +158,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setAccent3(load("accent3", DEFAULTS.accent3));
     setFg(load("fg", DEFAULTS.fg));
     setBorder(load("border", DEFAULTS.border));
+    setLine(load("line", DEFAULTS.line));
     setMounted(true);
   }, []);
 
@@ -157,6 +170,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => { if (!mounted) return; setProp("--bg-accent-3", accent3); save("accent3", accent3); }, [accent3, mounted]);
   useEffect(() => { if (!mounted) return; setProp("--bg-foreground", fg); save("fg", fg); }, [fg, mounted]);
   useEffect(() => { if (!mounted) return; setProp("--bg-border", border); save("border", border); }, [border, mounted]);
+  useEffect(() => { if (!mounted) return; setProp("--bg-line", line); save("line", line); }, [line, mounted]);
 
   const resetTheme = () => {
     setCanvas(DEFAULTS.canvas);
@@ -166,13 +180,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setAccent3(DEFAULTS.accent3);
     setFg(DEFAULTS.fg);
     setBorder(DEFAULTS.border);
+    setLine(DEFAULTS.line);
   };
 
   return (
     <ThemeContext.Provider
       value={{
-        canvas, accent, secondary, accent2, accent3, fg, border,
-        setCanvas, setAccent, setSecondary, setAccent2, setAccent3, setFg, setBorder,
+        canvas, accent, secondary, accent2, accent3, fg, border, line,
+        setCanvas, setAccent, setSecondary, setAccent2, setAccent3, setFg, setBorder, setLine,
         resetTheme,
         // Legacy aliases
         accentColor: accent,

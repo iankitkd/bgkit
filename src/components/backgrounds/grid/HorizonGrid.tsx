@@ -51,7 +51,7 @@ export default function HorizonGrid({
           y1="270"
           x2="800"
           y2="270"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.horizonOpacity}
         />
@@ -65,7 +65,7 @@ export default function HorizonGrid({
             y1={270}
             x2={400 + x}
             y2={600}
-            stroke="var(--color-bg-border)"
+            stroke="var(--color-bg-line)"
             strokeWidth="1"
             opacity={config.lineOpacity}
           />
@@ -78,7 +78,7 @@ export default function HorizonGrid({
             key={i}
             d={`M${80 - i * 15} ${y} Q400 ${y - 16} ${720 + i * 15} ${y}`}
             fill="none"
-            stroke="var(--color-bg-border)"
+            stroke="var(--color-bg-line)"
             strokeWidth="1"
             opacity={config.lineOpacity}
           />

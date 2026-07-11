@@ -48,8 +48,8 @@ export default function LargeGrid({
         style={{
           opacity: config.lineOpacity,
           backgroundImage: `
-            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)
+            linear-gradient(var(--color-bg-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-bg-line) 1px, transparent 1px)
           `,
           backgroundSize: `${config.spacing}px ${config.spacing}px`,
         }}

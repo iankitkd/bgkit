@@ -121,7 +121,7 @@ function StepHeader({ number, icon, title }: { number: number; icon: React.React
 // ─── Integration Setup ────────────────────────────────────────────────────────
 
 export function IntegrationSetup({ item }: { item: BackgroundItem }) {
-  const { canvas, accent, secondary, accent2, accent3, fg, border } = useThemeContext();
+  const { canvas, accent, secondary, accent2, accent3, fg, border, line } = useThemeContext();
   const [activeTab, setActiveTab] = useState<"page" | "hero">("page");
 
   const cssVarsBlock = `:root {
@@ -131,8 +131,9 @@ export function IntegrationSetup({ item }: { item: BackgroundItem }) {
   --bg-secondary:  ${secondary};
   --bg-accent-2:   ${accent2};
   --bg-accent-3:   ${accent3};
-  --bg-foreground: ${fg};
+  --bg-line:       ${line};
   --bg-border:     ${border};
+  --bg-foreground: ${fg};
 }
 
 @theme {
@@ -141,8 +142,9 @@ export function IntegrationSetup({ item }: { item: BackgroundItem }) {
   --color-bg-secondary:  var(--bg-secondary);
   --color-bg-accent-2:   var(--bg-accent-2);
   --color-bg-accent-3:   var(--bg-accent-3);
-  --color-bg-foreground: var(--bg-foreground);
+  --color-bg-line:     var(--bg-line);
   --color-bg-border:     var(--bg-border);
+  --color-bg-foreground: var(--bg-foreground);
 }`;
 
   const pageUsageBlock =

@@ -44,8 +44,8 @@ export default function SquareGrid({
         style={{
           opacity: config.minorOpacity,
           backgroundImage: `
-            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)
+            linear-gradient(var(--color-bg-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-bg-line) 1px, transparent 1px)
           `,
           backgroundSize: `${config.minor}px ${config.minor}px`,
         }}
@@ -58,8 +58,8 @@ export default function SquareGrid({
         style={{
           opacity: config.majorOpacity,
           backgroundImage: `
-            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)
+            linear-gradient(var(--color-bg-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-bg-line) 1px, transparent 1px)
           `,
           backgroundSize: `${config.major}px ${config.major}px`,
         }}

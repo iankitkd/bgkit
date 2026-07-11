@@ -95,7 +95,7 @@ export default function CircuitBoard({
             rx="6"
             fill="var(--color-bg-surface)"
             opacity={config.chipOpacity}
-            stroke="var(--color-bg-border)"
+            stroke="var(--color-bg-line)"
             strokeWidth="1"
           />
         ))}
@@ -107,7 +107,7 @@ export default function CircuitBoard({
             key={i}
             d={d}
             fill="none"
-            stroke="var(--color-bg-border)"
+            stroke="var(--color-bg-line)"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"

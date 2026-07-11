@@ -56,7 +56,7 @@ export default function TopographicLines({
                 d={path}
                 transform={`translate(0 ${offset}) scale(${1 + offset * 0.002})`}
                 fill="none"
-                stroke="var(--color-bg-border)"
+                stroke="var(--color-bg-line)"
                 strokeWidth={config.strokeWidth}
                 opacity={config.lineOpacity - offset * 0.002}
               />

@@ -9,6 +9,7 @@
   --bg-accent-3: #10b981;
   --bg-foreground: #dde4ef;
   --bg-border: #2a4468;
+  --bg-line: #7dd3fc;
 
   /* Brand */
   --primary: #7c3aed;
@@ -69,6 +70,7 @@
   --color-bg-accent-3: var(--bg-accent-3);
   --color-bg-foreground: var(--bg-foreground);
   --color-bg-border: var(--bg-border);
+  --color-bg-line: var(--bg-line);
 
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);

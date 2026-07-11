@@ -49,7 +49,7 @@ export default function PerspectiveGrid({
           y1={900}
           x2={centerX}
           y2={horizonY}
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth={config.strokeWidth}
           opacity={config.lineOpacity}
         />
@@ -73,7 +73,7 @@ export default function PerspectiveGrid({
           y1={y}
           x2="1440"
           y2={y}
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth={config.strokeWidth}
           opacity={config.lineOpacity}
         />
@@ -89,7 +89,7 @@ export default function PerspectiveGrid({
         className="absolute inset-x-0 top-0 h-2/5"
         style={{
           background:
-            "linear-gradient(to bottom, rgb(from var(--color-bg-border) r g b / 0.08), transparent)",
+            "linear-gradient(to bottom, rgb(from var(--color-bg-line) r g b / 0.08), transparent)",
         }}
       />
 

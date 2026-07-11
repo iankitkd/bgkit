@@ -32,12 +32,11 @@ export default function BackgroundsGallery({ initialBackgrounds }: BackgroundsGa
       params.set("category", categoryId);
     }
     const query = params.toString();
-    router.push(`${pathname}${query ? `?${query}` : ""}`);
+    router.push(`${pathname}${query ? `?${query}` : ""}`, { scroll: false });
   };
 
   // Filter background items based on search and category
   const filteredBackgrounds = useMemo(() => {
-    console.log(initialBackgrounds, "ib")
     return initialBackgrounds.filter((bg) => {
       const matchesCategory = activeCategory === "all" || bg.category.toLowerCase() === activeCategory;
       const matchesSearch =

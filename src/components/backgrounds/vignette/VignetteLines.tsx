@@ -62,7 +62,7 @@ export default function VignetteLines({
                 d={path}
                 transform={`translate(0 ${offset})`}
                 fill="none"
-                stroke="var(--color-bg-border)"
+                stroke="var(--color-bg-line)"
                 strokeWidth={config.strokeWidth}
                 opacity={config.lineOpacity - offset * 0.002}
                 strokeLinecap="round"

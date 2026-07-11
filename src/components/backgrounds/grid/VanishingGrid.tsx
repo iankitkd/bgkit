@@ -65,7 +65,7 @@ export default function VanishingGrid({
         stroke={
           accent
             ? "var(--color-bg-accent)"
-            : "var(--color-bg-border)"
+            : "var(--color-bg-line)"
         }
         strokeWidth={accent ? config.strokeWidth + 0.3 : config.strokeWidth}
         opacity={accent ? config.accentOpacity : config.lineOpacity}
@@ -93,7 +93,7 @@ export default function VanishingGrid({
           stroke={
             accent
               ? "var(--color-bg-accent)"
-              : "var(--color-bg-border)"
+              : "var(--color-bg-line)"
           }
           strokeWidth={accent ? config.strokeWidth + 0.3 : config.strokeWidth}
           opacity={accent ? config.accentOpacity * 0.6 : config.lineOpacity}

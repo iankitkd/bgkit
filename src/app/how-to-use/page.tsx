@@ -72,8 +72,9 @@ export default function HowToUsePage() {
   --bg-secondary:  #06b6d4;
   --bg-accent-2:   #ec4899;
   --bg-accent-3:   #22c55e;
-  --bg-foreground: #f8fafc;
+  --bg-line:       #7dd3fc;
   --bg-border:     #232a36;
+  --bg-foreground: #f8fafc;
 }`;
 
   const themeBlock = `@theme {
@@ -82,8 +83,9 @@ export default function HowToUsePage() {
   --color-bg-secondary:  var(--bg-secondary);
   --color-bg-accent-2:   var(--bg-accent-2);
   --color-bg-accent-3:   var(--bg-accent-3);
-  --color-bg-foreground: var(--bg-foreground);
+  --color-bg-line:     var(--bg-line);
   --color-bg-border:     var(--bg-border);
+  --color-bg-foreground: var(--bg-foreground);
 }`;
 
   return (

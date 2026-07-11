@@ -2,9 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Copy, Check, Code } from "lucide-react";
+import { Copy, Check, Code, Eye, X } from "lucide-react";
 import { BackgroundItem } from "@/types";
 import Image from "next/image";
+import HeroPreview from "./hero-preview";
 
 interface BackgroundCardProps {
   item: BackgroundItem;
@@ -14,6 +15,7 @@ interface BackgroundCardProps {
 export default function BackgroundCard({ item, code }: BackgroundCardProps) {
   const [copied, setCopied] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCopy = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -103,8 +105,61 @@ export default function BackgroundCard({ item, code }: BackgroundCardProps) {
               </>
             )}
           </button>
+
+          {/* Preview Button */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsModalOpen(true);
+            }}
+            className="relative z-10 flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-btn text-xs font-bold transition-all cursor-pointer bg-surface hover:bg-surface-2 border border-border text-muted"
+          >
+            <Eye className="w-3.5 h-3.5" />
+            <span>Preview</span>
+          </button>
         </div>
       </div>
+
+      {/* Preview Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md cursor-default pointer-events-auto"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsModalOpen(false);
+          }}
+        >
+          {/* Modal Container */}
+          <div
+            className="relative w-full max-w-5xl rounded-panel border border-border bg-surface text-fg shadow-2xl flex flex-col p-4 sm:p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsModalOpen(false);
+              }}
+              className="absolute top-1 right-1 p-2 rounded-full bg-surface-2 hover:bg-surface-3 text-muted hover:text-fg transition-colors border border-border cursor-pointer z-10"
+              aria-label="Close preview modal"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            {/* Preview Content */}
+            <div className="mt-2 text-left">
+              <HeroPreview
+                componentName={item.componentName}
+                name={item.name}
+                minimal
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

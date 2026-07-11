@@ -7,11 +7,12 @@ import { BACKGROUND_COMPONENTS } from "@/components/backgrounds";
 interface HeroPreviewProps {
   componentName: string;
   name: string;
+  minimal?: boolean;
 }
 
 type Alignment = "center" | "left";
 
-export default function HeroPreview({ componentName, name }: HeroPreviewProps) {
+export default function HeroPreview({ componentName, name, minimal = false }: HeroPreviewProps) {
   const [alignment, setAlignment] = useState<Alignment>("center");
 
   const Component = BACKGROUND_COMPONENTS[componentName];
@@ -23,15 +24,17 @@ export default function HeroPreview({ componentName, name }: HeroPreviewProps) {
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <Monitor className="w-4 h-4 text-primary" />
-            <h2 className="text-xl font-bold tracking-tight text-fg sm:text-2xl">
-              How It Looks
+            <h2 className={minimal ? "text-base font-bold tracking-tight text-fg" : "text-xl font-bold tracking-tight text-fg sm:text-2xl"}>
+              {minimal ? `Preview: ${name}` : "How It Looks"}
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-muted">
-            A live preview of{" "}
-            <span className="text-fg/80 font-medium">{name}</span> used as a
-            full-width hero section background.
-          </p>
+          {!minimal && (
+            <p className="text-xs sm:text-sm text-muted">
+              A live preview of{" "}
+              <span className="text-fg/80 font-medium">{name}</span> used as a
+              full-width hero section background.
+            </p>
+          )}
         </div>
 
         {/* Alignment Toggle */}

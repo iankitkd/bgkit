@@ -64,7 +64,7 @@ export default function SoundWaves({
         stroke={
           accent
             ? "var(--color-bg-secondary)"
-            : "var(--color-bg-border)"
+            : "var(--color-bg-line)"
         }
         strokeWidth={
           accent

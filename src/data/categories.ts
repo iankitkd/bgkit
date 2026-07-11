@@ -48,6 +48,12 @@ export const RAW_CATEGORIES = [
     description:
       "Volumetric beams, bokeh, and cinematic lighting effects for premium hero sections.",
   },
+  {
+    id: "abstract",
+    name: "Abstract",
+    description:
+      "Organic blobs and artistic abstract backgrounds for creative and startup websites.",
+  },
 
   {
     id: "grid",
@@ -63,28 +69,10 @@ export const RAW_CATEGORIES = [
   },
 
   {
-    id: "geometry",
-    name: "Geometry",
-    description:
-      "Geometric backgrounds featuring folded shapes, isometric patterns, and structured forms that add subtle depth and visual interest.",
-  },
-  {
     id: "pattern",
     name: "Pattern",
     description:
       "Topographic, dotted, and geometric patterns that add subtle visual texture.",
-  },
-  {
-    id: "abstract",
-    name: "Abstract",
-    description:
-      "Organic blobs and artistic abstract backgrounds for creative and startup websites.",
-  },
-  {
-    id: "space",
-    name: "Space",
-    description:
-      "Stars, nebulae, and cosmic-inspired backgrounds for futuristic and AI experiences.",
   },
   {
     id: "waves",
@@ -98,5 +86,18 @@ export const RAW_CATEGORIES = [
     name: "Texture",
     description:
       "Noise, grain, dust, and subtle textures for depth and realism.",
+  },
+
+  {
+    id: "geometry",
+    name: "Geometry",
+    description:
+      "Geometric backgrounds featuring folded shapes, isometric patterns, and structured forms that add subtle depth and visual interest.",
+  },
+  {
+    id: "space",
+    name: "Space",
+    description:
+      "Stars, nebulae, and cosmic-inspired backgrounds for futuristic and AI experiences.",
   },
 ] as const satisfies Omit<CategoryInfo, "count">[];

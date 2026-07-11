@@ -66,7 +66,7 @@ export default function RadialRipples({
         stroke={
           accent
             ? "var(--color-bg-accent)"
-            : "var(--color-bg-border)"
+            : "var(--color-bg-line)"
         }
         strokeWidth={
           accent

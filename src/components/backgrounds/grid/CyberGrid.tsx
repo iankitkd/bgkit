@@ -76,8 +76,8 @@ export default function CyberGrid({
         style={{
           opacity: config.gridOpacity,
           backgroundImage: `
-            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
-            linear-gradient(90deg,var(--color-bg-border) 1px, transparent 1px)
+            linear-gradient(var(--color-bg-line) 1px, transparent 1px),
+            linear-gradient(90deg,var(--color-bg-line) 1px, transparent 1px)
           `,
           backgroundSize: "48px 48px",
         }}

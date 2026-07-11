@@ -44,8 +44,8 @@ export default function BlueprintGrid({
         style={{
           opacity: config.minorOpacity,
           backgroundImage: `
-            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)
+            linear-gradient(var(--color-bg-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-bg-line) 1px, transparent 1px)
           `,
           backgroundSize: "24px 24px",
         }}
@@ -58,8 +58,8 @@ export default function BlueprintGrid({
         style={{
           opacity: config.majorOpacity,
           backgroundImage: `
-            linear-gradient(var(--color-bg-border) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-bg-border) 1px, transparent 1px)
+            linear-gradient(var(--color-bg-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-bg-line) 1px, transparent 1px)
           `,
           backgroundSize: "120px 120px",
         }}
@@ -77,7 +77,7 @@ export default function BlueprintGrid({
           cy="180"
           r="90"
           fill="none"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.guideOpacity}
         />
@@ -87,7 +87,7 @@ export default function BlueprintGrid({
           cy="360"
           r="110"
           fill="none"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.guideOpacity}
         />
@@ -95,7 +95,7 @@ export default function BlueprintGrid({
         {/* Crosshairs */}
 
         <g
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.guideOpacity}
         >
@@ -109,7 +109,7 @@ export default function BlueprintGrid({
         {/* Measurement guides */}
 
         <g
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.guideOpacity * 0.8}
         >
@@ -130,7 +130,7 @@ export default function BlueprintGrid({
         ].map(([x, y], i) => (
           <g
             key={i}
-            stroke="var(--color-bg-border)"
+            stroke="var(--color-bg-line)"
             strokeWidth="1"
             opacity={config.guideOpacity}
           >

@@ -79,7 +79,7 @@ export default function HexagonGrid({
                 points={HEX}
                 transform={`translate(${x},${y})`}
                 fill="none"
-                stroke="var(--color-bg-border)"
+                stroke="var(--color-bg-line)"
                 strokeWidth="1"
                 opacity={config.strokeOpacity}
               />

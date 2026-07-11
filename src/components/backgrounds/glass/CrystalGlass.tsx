@@ -81,7 +81,7 @@ export default function CrystalGlass({
           y1="0"
           x2="400"
           y2="180"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.edgeOpacity}
         />
@@ -91,7 +91,7 @@ export default function CrystalGlass({
           y1="0"
           x2="400"
           y2="180"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.edgeOpacity}
         />
@@ -101,7 +101,7 @@ export default function CrystalGlass({
           y1="380"
           x2="400"
           y2="180"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.edgeOpacity * 0.75}
         />
@@ -111,7 +111,7 @@ export default function CrystalGlass({
           y1="380"
           x2="400"
           y2="180"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.edgeOpacity * 0.75}
         />
@@ -121,7 +121,7 @@ export default function CrystalGlass({
           y1="600"
           x2="400"
           y2="420"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.edgeOpacity * 0.55}
         />
@@ -131,7 +131,7 @@ export default function CrystalGlass({
           y1="600"
           x2="400"
           y2="420"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.edgeOpacity * 0.55}
         />
@@ -141,7 +141,7 @@ export default function CrystalGlass({
           y1="180"
           x2="400"
           y2="420"
-          stroke="var(--color-bg-border)"
+          stroke="var(--color-bg-line)"
           strokeWidth="1"
           opacity={config.edgeOpacity * 0.7}
         />
