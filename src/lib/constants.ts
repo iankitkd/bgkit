@@ -4,3 +4,4 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 export const SITE_DESCRIPTION =
   "Copy-paste React and Tailwind CSS backgrounds with live previews, global color customization, and production-ready component code.";
+export const GITHUB_URL = "https://github.com/iankitkd/bgkit";

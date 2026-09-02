@@ -1,9 +1,50 @@
 "use client";
 
 import Link from "next/link";
-import { SITE_NAME } from "@/lib/constants";
+import { SITE_NAME, GITHUB_URL } from "@/lib/constants";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+
+// Footer Link Definitions
+
+interface FooterLink {
+  label: string;
+  href: string;
+  isExternal?: boolean;
+}
+
+const EXPLORE_LINKS: FooterLink[] = [
+  { label: "Home", href: "/" },
+  { label: "All Backgrounds", href: "/backgrounds" },
+  { label: "Features", href: "/#features" },
+  { label: "Documentation", href: "/how-to-use" },
+];
+
+const CATEGORY_LINKS: FooterLink[] = [
+  { label: "Gradients", href: "/backgrounds/gradients" },
+  { label: "Grid & Mesh", href: "/backgrounds/grid" },
+  { label: "Technology", href: "/backgrounds/technology" },
+  { label: "Glassmorphism", href: "/backgrounds/glass" },
+  { label: "Optics & Flare", href: "/backgrounds/optics" },
+  { label: "Abstract & Motion", href: "/backgrounds/abstract" },
+];
+
+const RESOURCE_LINKS: FooterLink[] = [
+  { label: "GitHub Repository", href: GITHUB_URL, isExternal: true },
+  { label: "How to Use", href: "/how-to-use" },
+  { label: "FAQs", href: "/#faq" },
+  // {
+  //   label: "MIT License",
+  //   href: `${GITHUB_URL}/blob/main/LICENSE`,
+  //   isExternal: true,
+  // },
+];
+
+const BOTTOM_LINKS: FooterLink[] = [
+  { label: "GitHub", href: GITHUB_URL, isExternal: true },
+  { label: "Browse Library", href: "/backgrounds" },
+  // { label: "Integration Guide", href: "/how-to-use" },
+];
 
 export default function Footer() {
   const pathname = usePathname();
@@ -46,35 +87,13 @@ export default function Footer() {
               Explore
             </h4>
             <ul className="space-y-2 text-xs text-muted-2">
-              <li>
-                <Link href="/" className="hover:text-fg transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/backgrounds"
-                  className="hover:text-fg transition-colors"
-                >
-                  All Backgrounds
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#features"
-                  className="hover:text-fg transition-colors"
-                >
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-to-use"
-                  className="hover:text-fg transition-colors"
-                >
-                  Documentation
-                </Link>
-              </li>
+              {EXPLORE_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-fg transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -84,76 +103,40 @@ export default function Footer() {
               Categories
             </h4>
             <ul className="space-y-2 text-xs text-muted-2">
-              <li>
-                <Link
-                  href="/backgrounds/gradients"
-                  className="hover:text-fg transition-colors"
-                >
-                  Gradients
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/backgrounds/grid"
-                  className="hover:text-fg transition-colors"
-                >
-                  Grid & Mesh
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/backgrounds/technology"
-                  className="hover:text-fg transition-colors"
-                >
-                  Technology
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/backgrounds/glass"
-                  className="hover:text-fg transition-colors"
-                >
-                  Glassmorphism
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/backgrounds/optics"
-                  className="hover:text-fg transition-colors"
-                >
-                  Optics & Flare
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/backgrounds/abstract"
-                  className="hover:text-fg transition-colors"
-                >
-                  Abstract & Motion
-                </Link>
-              </li>
+              {CATEGORY_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-fg transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Links Column 3: Legal & Support */}
+          {/* Links Column 3: Resources & GitHub */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-muted">
               Resources
             </h4>
             <ul className="space-y-2 text-xs text-muted-2">
-              <li>
-                <Link
-                  href="/how-to-use"
-                  className="hover:text-fg transition-colors"
-                >
-                  How to Use
-                </Link>
-              </li>
-              <li>
-                <Link href="/#faq" className="hover:text-fg transition-colors">
-                  FAQs
-                </Link>
-              </li>
+              {RESOURCE_LINKS.map((link) => (
+                <li key={link.href}>
+                  {link.isExternal ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-fg transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className="hover:text-fg transition-colors">
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
               <li>
                 <span className="text-muted-2 cursor-not-allowed">
                   MIT License
@@ -170,19 +153,25 @@ export default function Footer() {
             component library.
           </div>
           <div className="flex items-center gap-4 text-xs text-muted-2">
-            <Link
-              href="/backgrounds"
-              className="hover:text-fg transition-colors"
-            >
-              Browse Library
-            </Link>
-            <span>•</span>
-            <Link
-              href="/how-to-use"
-              className="hover:text-fg transition-colors"
-            >
-              Integration Guide
-            </Link>
+            {BOTTOM_LINKS.map((link, idx) => (
+              <span key={link.href} className="flex items-center gap-4">
+                {idx > 0 && <span>•</span>}
+                {link.isExternal ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-fg transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.href} className="hover:text-fg transition-colors">
+                    {link.label}
+                  </Link>
+                )}
+              </span>
+            ))}
           </div>
         </div>
       </div>
