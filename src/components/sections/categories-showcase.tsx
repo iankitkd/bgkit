@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { ArrowRight, Grid, Layers, Cpu, Code2, Network, ShieldAlert } from "lucide-react";
+import {
+  ArrowRight,
+  Grid,
+  Layers,
+  Cpu,
+  Code2,
+  Network,
+  ShieldAlert,
+} from "lucide-react";
 
 const CATEGORIES_SHOWCASE = [
   {
@@ -33,7 +41,7 @@ const CATEGORIES_SHOWCASE = [
   {
     icon: Cpu,
     name: "Patterns & Textures",
-    slug: "patterns",
+    slug: "pattern",
     description:
       "Topographic contours, vignette patterns, noise, grain, dots, and subtle textures that add depth while keeping content clear and readable.",
   },
@@ -56,7 +64,8 @@ export default function CategoriesShowcaseSection() {
             Choose your signature style.
           </h2>
           <p className="text-base sm:text-lg text-muted">
-            Discover a wide variety of interactive backgrounds tailored for developers, designers, and modern tech products.
+            Discover a wide variety of interactive backgrounds tailored for
+            developers, designers, and modern tech products.
           </p>
         </div>
 
@@ -71,9 +80,7 @@ export default function CategoriesShowcaseSection() {
               >
                 <div className="space-y-4">
                   {/* Icon */}
-                  <div
-                    className="inline-flex items-center justify-center p-3 rounded-btn border border-primary/20 bg-primary/5 text-primary"
-                  >
+                  <div className="inline-flex items-center justify-center p-3 rounded-btn border border-primary/20 bg-primary/5 text-primary">
                     <Icon className="w-5 h-5" />
                   </div>
 
@@ -87,12 +94,16 @@ export default function CategoriesShowcaseSection() {
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-border flex items-center justify-between">
-                  <span className="text-xs text-muted-2 font-semibold group-hover:text-muted transition-colors">
-                    View collection
-                  </span>
                   <Link
-                    href={`/backgrounds?category=${cat.slug}`}
+                    href={`/backgrounds/${cat.slug}`}
+                    className="text-xs text-muted-2 font-semibold group-hover:text-primary transition-colors inline-flex items-center gap-1.5"
+                  >
+                    View {cat.name.split(" ")[0]} collection
+                  </Link>
+                  <Link
+                    href={`/backgrounds/${cat.slug}`}
                     className="p-2 rounded-pill bg-surface border border-border text-muted hover:bg-surface-2 hover:text-fg transition-all"
+                    aria-label={`View ${cat.name} backgrounds`}
                   >
                     <ArrowRight className="w-4 h-4" />
                   </Link>

@@ -15,7 +15,9 @@ export const CATEGORIES: CategoryInfo[] = RAW_CATEGORIES.map((cat) => ({
   count:
     cat.id === "all"
       ? BACKGROUNDS.length
-      : BACKGROUNDS.filter((bg) => bg.category === cat.id).length,
+      : BACKGROUNDS.filter(
+          (bg) => bg.category.toLowerCase() === cat.id.toLowerCase()
+        ).length,
 }));
 
 // ─── Helper functions ────────────────────────────────────────────────────────
@@ -25,8 +27,10 @@ export function getBackgroundBySlug(slug: string): BackgroundItem | undefined {
 }
 
 export function getBackgroundsByCategory(category: string): BackgroundItem[] {
-  if (category === "all") return BACKGROUNDS;
-  return BACKGROUNDS.filter((bg) => bg.category === category);
+  if (category.toLowerCase() === "all") return BACKGROUNDS;
+  return BACKGROUNDS.filter(
+    (bg) => bg.category.toLowerCase() === category.toLowerCase()
+  );
 }
 
 // ─── Re-export slices for consumers that need a single category ──────────────

@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BACKGROUNDS } from "@/data";
 import { getBackgroundCode } from "@/lib/code-reader";
 import BackgroundsGallery from "@/components/ui/backgrounds-gallery";
+import { BreadcrumbJsonLd, CollectionJsonLd } from "@/components/seo/json-ld";
 import { Grid } from "lucide-react";
 import type { Metadata } from "next";
 import { SITE_NAME } from "@/lib/constants";
@@ -45,29 +46,51 @@ export default function BackgroundsPage() {
     code: getBackgroundCode(bg.componentName),
   }));
 
-  return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-8">
-      {/* Page Header */}
-      <div className="flex flex-col gap-2 border-b border-border pb-6">
-        <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight bg-linear-to-r from-fg to-muted bg-clip-text text-transparent flex items-center gap-2.5">
-          <Grid className="w-6 h-6 sm:w-8 sm:h-8 text-primary shrink-0" />
-          <span>Explore Backgrounds</span>
-        </h1>
-        <p className="text-sm sm:text-sm text-muted max-w-2xl leading-relaxed">
-          Find, preview, customize, and copy-paste interactive React + Tailwind
-          CSS backgrounds. Click on any card to view its full details.
-        </p>
-      </div>
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Browse Backgrounds", url: "/backgrounds" },
+  ];
 
-      <Suspense
-        fallback={
-          <div className="flex items-center justify-center py-20 text-muted text-sm">
-            Loading gallery...
-          </div>
-        }
-      >
-        <BackgroundsGallery initialBackgrounds={backgroundsWithCode} />
-      </Suspense>
-    </div>
+  const collectionItems = BACKGROUNDS.map((bg) => ({
+    name: bg.name,
+    description: bg.description,
+    url: `/backgrounds/${bg.category}/${bg.slug}`,
+    image: `/thumbnails/${bg.slug}.webp`,
+  }));
+
+  return (
+    <>
+      <BreadcrumbJsonLd items={breadcrumbs} />
+      <CollectionJsonLd
+        name="All Backgrounds Collection"
+        description="Comprehensive gallery of React and Tailwind CSS backgrounds"
+        url="/backgrounds"
+        items={collectionItems}
+      />
+
+      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-8">
+        {/* Page Header */}
+        <div className="flex flex-col gap-2 border-b border-border pb-6">
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight bg-linear-to-r from-fg to-muted bg-clip-text text-transparent flex items-center gap-2.5">
+            <Grid className="w-6 h-6 sm:w-8 sm:h-8 text-primary shrink-0" />
+            <span>Explore Backgrounds</span>
+          </h1>
+          <p className="text-sm sm:text-sm text-muted max-w-2xl leading-relaxed">
+            Find, preview, customize, and copy-paste interactive React + Tailwind
+            CSS backgrounds. Click on any card to view its full details.
+          </p>
+        </div>
+
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center py-20 text-muted text-sm">
+              Loading gallery...
+            </div>
+          }
+        >
+          <BackgroundsGallery initialBackgrounds={backgroundsWithCode} />
+        </Suspense>
+      </div>
+    </>
   );
 }

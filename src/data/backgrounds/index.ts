@@ -16,7 +16,7 @@ import { VIGNETTE_BACKGROUNDS } from "./vignette";
 import { OPTICS_BACKGROUNDS } from "./optics";
 import { GEOMETRY_BACKGROUNDS } from "./geometry";
 
-// ─── Combined registry ──────────────────────────────────────────────────────
+// ─── Combined registry with normalized lowercase category keys ──────────────
 
 export const BACKGROUNDS: BackgroundItem[] = [
   ...VIGNETTE_BACKGROUNDS,
@@ -33,4 +33,7 @@ export const BACKGROUNDS: BackgroundItem[] = [
   ...TEXTURE_BACKGROUNDS,
   ...GEOMETRY_BACKGROUNDS,
   ...SPACE_BACKGROUNDS,
-];
+].map((bg) => ({
+  ...bg,
+  category: bg.category.toLowerCase(),
+}));

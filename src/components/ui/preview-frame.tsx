@@ -16,9 +16,9 @@ export default function PreviewFrame({
   const Component = BACKGROUND_COMPONENTS[componentName];
 
   return (
-    <div className="w-full max-w-2xl aspect-video rounded-card overflow-hidden border border-border-light bg-bg shadow-2xl relative">
+    <div className="w-full max-w-2xl aspect-video rounded-card overflow-hidden border border-border-light bg-bg shadow-2xl relative isolate">
       {/* Live component fills the entire frame */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         {Component ? (
           <Component variant="preview" />
         ) : (

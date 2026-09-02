@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/theme-context";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import { WebSiteJsonLd } from "@/components/seo/json-ld";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
 
 const geistSans = Geist({
@@ -98,6 +99,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-bg text-fg selection:bg-primary/30 selection:text-primary">
+        <WebSiteJsonLd />
         <ThemeProvider>
           <Header />
           <main className="flex-1 flex flex-col">{children}</main>

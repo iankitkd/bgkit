@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { BACKGROUNDS } from "@/data";
+import { BACKGROUNDS, RAW_CATEGORIES } from "@/data";
 import { SITE_URL } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: SITE_URL,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 1,
+      priority: 1.0,
     },
     {
       url: `${SITE_URL}/backgrounds`,
@@ -26,6 +26,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Dedicated category routes
+  const categoryRoutes: MetadataRoute.Sitemap = RAW_CATEGORIES.filter(
+    (cat) => cat.id !== "all"
+  ).map((cat) => ({
+    url: `${SITE_URL}/backgrounds/${cat.id}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.85,
+  }));
+
+  // Background item detail routes
   const backgroundRoutes: MetadataRoute.Sitemap = BACKGROUNDS.map((bg) => ({
     url: `${SITE_URL}/backgrounds/${bg.category}/${bg.slug}`,
     lastModified: now,
@@ -34,5 +45,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [`${SITE_URL}/thumbnails/${bg.slug}.webp`],
   }));
 
-  return [...staticRoutes, ...backgroundRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...backgroundRoutes];
 }
